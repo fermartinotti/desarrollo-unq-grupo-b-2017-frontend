@@ -1,0 +1,16 @@
+<div>
+  <div class="register-bottom-grid">
+      <h3>Alta de Menu</h3>
+      <div class="wow fadeInLeft" data-wow-delay="0.4s">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+           <span>Nombre<label>*</label></span>
+           <input name="nombre" type="text" ngModel required>
+           <span>Descripcion<label>*</label></span>
+           <input name="descripcion" type="text" ngModel required>
+           <span>Precio<label>*</label></span>
+           <input name="precio" type="number" ngModel required>
+           <button>Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
