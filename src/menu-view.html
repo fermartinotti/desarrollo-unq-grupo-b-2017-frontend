@@ -1,16 +1,44 @@
 <div>
+  <nav>
+      <a routerLink="/" routerLinkActive="active">Pagina principal</a>
+  </nav>
   <div class="register-bottom-grid">
       <h3>Alta de Menu</h3>
       <div class="wow fadeInLeft" data-wow-delay="0.4s">
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-           <span>Nombre<label>*</label></span>
-           <input name="nombre" type="text" ngModel required>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <span>Nombre<label>*</label></span>
+           <input id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" [(ngModel)]='menu.nombre'>
+           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+               class="alert alert-danger">
+            <div *ngIf="nombre.errors.required">
+              El nombre es requerido.
+            </div>
+            <div *ngIf="nombre.errors.minlength">
+              El nombre debe ser de mas de 4 caracteres.
+            </div>
+          </div>
            <span>Descripcion<label>*</label></span>
-           <input name="descripcion" type="text" ngModel required>
+           <input des="descripcion" name="descripcion" #descripcion="ngModel" type="text" ngModel required minlength="20" [(ngModel)]='menu.descripcion'>
+           <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+               class="alert alert-danger">
+            <div *ngIf="descripcion.errors.required">
+              La Descripcion es requerida.
+            </div>
+            <div *ngIf="descripcion.errors.minlength">
+              La Descripcion debe ser de mas de 20 caracteres.
+            </div>
+          </div>
            <span>Precio<label>*</label></span>
-           <input name="precio" type="number" ngModel required>
-           <button>Submit</button>
+           <input name="precio" type="number" ngModel required [(ngModel)]='menu.precio'>
+           <span>Categoria<label>*</label></span>
+
+           <select ngModel name="categoria" [(ngModel)]='menu.categoria'>Categorias
+             <option *ngFor="let cate of categorias" value="{{ cate }}">{{ cate }}</option>
+           </select>
+
+           <!-- {{categorias}} -->
+           <button type="submit" [disabled]="!f.form.valid" >Submit</button>
         </form>
       </div>
-    </div>
+  </div>
 </div>

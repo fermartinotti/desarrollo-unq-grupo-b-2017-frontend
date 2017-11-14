@@ -3,13 +3,9 @@ import { ClienteService } from './cliente/cliente.service';
 
 @Component({
   selector: 'my-app',
-  template: `<nav>
-      <a routerLink="/menu" routerLinkActive="active">Menu</a>
-    </nav>
-    <router-outlet></router-outlet>`,
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent  {
-	name = 'Angular';
 
 	constructor(private clienteService: ClienteService) {}
 

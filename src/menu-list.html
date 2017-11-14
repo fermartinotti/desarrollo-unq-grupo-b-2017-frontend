@@ -1,0 +1,9 @@
+<div>
+  <h3>Lista Menus</h3>
+  <ul>
+    <li *ngFor="let menu of menulist">
+      {{ menu.nombre }} <a routerLink="/menu/{{menu.id}}" routerLinkActive="active">Editar Menu</a>
+    </li>
+  </ul>
+  <a routerLink="/menu" routerLinkActive="active">Crear Menu</a>
+</div>

@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/styles.css" >
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" >
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <title>MorfiYa</title>
     <base href="/">
@@ -20,51 +20,22 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="/node_modules/core-js/client/shim.min.js"></script>
 
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
 
     <script src="systemjs.config.js"></script>
     <script>
       System.import('main.js').catch(function(err){ console.error(err); });
     </script>
   </head>
-
   <body>
-
     <div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-            <div class="masthead clearfix">
-                <div class="inner">
-                    <h3 class="masthead-brand"></h3>
-                    <nav class="nav nav-masthead">
-                        <a class="nav-link active" href="#">Loggin</a>
-                        <a class="nav-link active" href="#">Alta de Menu</a>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="inner cover">
-                <img src="img/logo2.png" class="rounded mx-auto d-block" alt="logo">
-                <h2 class="white">Compra Online a precio mayorista!</h2>
-                <h1 class="white"> REGISTRATE YA</h1>
-
-                <div class="mastfoot">
-                    <div class="inner">
-                        <p> Copyright 2017  <a href="https://getbootstrap.com">www.morfiya.com.ar</a></p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <img src="img/appled.png" class="" alt="logo" width="230">
-        <img src="img/googled.png" class="" alt="logo" width="230">
-    </div>
-    <my-app>Loading AppComponent content here ...</my-app>
+      <div class="columns">
+        <md-card>
+          <my-app></my-app>
+        </md-card>
+      </div>
   </body>
 </html>

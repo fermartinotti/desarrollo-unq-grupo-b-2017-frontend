@@ -1,13 +1,19 @@
-class Menu  {
+export class Menu  {
 
 	nombre : String;
   descripcion : String;
-  // categoria : Categoria;
-	// telefono :
-	// direccion :
-	precio : number;
+  categoria : Categoria;
+	valorDelivery : number;
+	hEntregas : Array<String> ;
+	hEnvios : Array<String> ;
   fechaVigenciaDesde : Date;
   fechaVigenciaHasta : Date;
+	precio : number;
+	cantidadMinima : number;
+	cantidadMinima2 : number;
+	precioCantidadMinima : number;
+	precioCantidadMinima2 : number;
+	cantidadMaxVtasPorDia : number;
 }
 //
 // private String nombre;
