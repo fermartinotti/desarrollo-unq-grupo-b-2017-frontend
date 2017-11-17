@@ -17,7 +17,14 @@ export class MenuService {
 	             .catch(this.handleError);
 	}
 
-	getMenu(id): Promise<Menu> { //metodo para traer un Menu
+	getMenusByName(nombre:String): Promise<Menu[]> { //metodo para traer todos los Menus
+	  return this.http.get(`${this.menusUrl}/getByNombre/`+nombre+'/1')
+	             .toPromise()
+	             .then(response => response.json() as Menu[])
+	             .catch(this.handleError);
+	}
+
+	getMenu(id:any): Promise<Menu> { //metodo para traer un Menu
 	  return this.http.get(`${this.menusUrl}/getById/`+id )
 	             .toPromise()
 	             .then(response => response.json() as Menu)
@@ -32,7 +39,7 @@ export class MenuService {
 				.catch(this.handleError);;
 	}
 
-	update(menu: Menu, id): Promise<Response> {
+	update(menu: Menu, id:any): Promise<Response> {
 	    console.log('updating menu ' + JSON.stringify(menu));
 			console.log(`${this.menusUrl}/update`)
 	    return this.http.put(`${this.menusUrl}/update`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()

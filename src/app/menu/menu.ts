@@ -1,8 +1,9 @@
+
 export class Menu  {
 
 	nombre : String;
   descripcion : String;
-  categoria : Categoria;
+  categoria : String;
 	valorDelivery : number;
 	hEntregas : Array<String> ;
 	hEnvios : Array<String> ;

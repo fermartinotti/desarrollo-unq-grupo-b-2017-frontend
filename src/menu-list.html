@@ -1,5 +1,9 @@
 <div>
   <h3>Lista Menus</h3>
+  <form class="form-inline mt-2 mt-md-0">
+    <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="nombre"/>
+    <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="localidad"/>
+  </form>
   <ul>
     <li *ngFor="let menu of menulist">
       {{ menu.nombre }} <a routerLink="/menu/{{menu.id}}" routerLinkActive="active">Editar Menu</a>

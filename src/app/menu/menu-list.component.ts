@@ -6,19 +6,37 @@ import { Menu } from './menu';
 
 @Component({
   selector: 'menu-list',
-  templateUrl: 'menu-list.html',
-
+  templateUrl: 'menu-list.html'
 })
+
 export class MenuListComponent  {
+
   menulist: Menu[];
+  mySearch: String;
 
   constructor(private menuService: MenuService) {}
 
 	ngOnInit() {
 		console.log('Menus')
-		this.menuService.getMenus().then((menuObtained) => {
+		this.getAllMenus()
+	}
+
+  getAllMenus() {
+    this.menuService.getMenus().then((menuObtained) => {
       this.menulist = menuObtained
       console.log(menuObtained)
 		})
-	}
+  }
+
+  nameChange(change:String) {
+    if (!change) {
+      this.getAllMenus()
+    }
+    else {
+      this.menuService.getMenusByName(change).then((menuObtained) => {
+        this.menulist = menuObtained
+        console.log(menuObtained)
+      })
+    }
+  }
 }

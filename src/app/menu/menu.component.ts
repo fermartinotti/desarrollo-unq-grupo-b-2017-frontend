@@ -12,20 +12,20 @@ import { Menu } from './menu'
 })
 export class MenuComponent {
   categorias = ['Pizza', 'Pastas', 'Ensaladas', 'Parrilla'];
-  menu : Menu = {}
+  menu : Menu
 
   constructor(private menuService: MenuService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+     this.route.params.subscribe(params => {
        console.log(params['id'])
        if (params['id']){
          this.menuService.getMenu(params['id']).then((menuObtained) => {
            this.menu = menuObtained
            console.log(menuObtained)
-         }
+         })
        }
-    });
+    })
   }
 
   onSubmit(f: NgForm) {

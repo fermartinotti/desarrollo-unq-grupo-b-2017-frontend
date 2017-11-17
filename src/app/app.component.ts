@@ -13,7 +13,6 @@ export class AppComponent  {
 		console.log('clientes')
 		this.clienteService.getClientes().then((data) => {
 			console.log(data)
-      console.log('data')
 		})
 	}
 
