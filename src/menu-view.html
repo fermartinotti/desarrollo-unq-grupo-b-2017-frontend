@@ -2,10 +2,11 @@
   <nav>
       <a routerLink="/" routerLinkActive="active">Pagina principal</a>
   </nav>
-  <div class="register-bottom-grid">
+  <div>
       <h3>Alta de Menu</h3>
-      <div class="wow fadeInLeft" data-wow-delay="0.4s">
-        <form *ngIf="menu" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <!-- *ngIf="menu" -->
           <span>Nombre<label>*</label></span>
            <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" >
 
@@ -33,7 +34,7 @@
            <input [(ngModel)]='menu.precio' name="precio" type="number" ngModel required >
            <span>Categoria<label>*</label></span>
 
-           <select [(ngModel)]='menu.categoria' ngModel name="categoria" >Categorias
+           <select [(ngModel)]='menu.categoria' ngModel name="categoria" > Categorias
              <option *ngFor="let cate of categorias" value="{{ cate }}">{{ cate }}</option>
            </select>
 

@@ -1,5 +1,5 @@
-class Cliente  {
-	
+export class Cliente  {
+
 	cuit : number;
 	nombre : String;
 	apellido : String;
