@@ -8,26 +8,73 @@
   <meta name="author" content="">
 
   <title>MorfiYA</title>
-
+	<!-- bootstrap scripts -->
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css" >
   <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
   <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
+   <!-- ANGULAR SCRIPTS -->
+  <!-- Polyfill(s) for older browsers -->
   <script src="/node_modules/core-js/client/shim.min.js"></script>
-
   <script src="/node_modules/zone.js/dist/zone.js"></script>
   <script src="/node_modules/systemjs/dist/system.src.js"></script>
-
   <script src="systemjs.config.js"></script>
 
   <script>
     System.import('main.js').catch(function(err){ console.error(err); });
   </script>
+
+   <!-- auth0 scripts -->
+  <script src="node_modules/auth0-js/build/auth0.js"></script>
+  <script src="auth0-variables.js"></script>
+  <script src="app.js"></script>
+
 </head>
 
 <body>
+<div id="loading">
+  <img src="assets/loading.svg" alt="Loading spinner">
+</div>
+
+<div class="content">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+    <a class="navbar-brand" href="#">MorfiYA</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Configuracion</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar menu" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+
+        <button id="btn-home-view" class="btn btn-primary btn-margin">
+          Home
+        </button>
+
+        <button id="btn-login" class="btn btn-primary btn-margin">
+          Log In
+        </button>
+
+        <button id="btn-logout" class="btn btn-primary btn-margin">
+          Log Out
+        </button>
+      </form>
+    </div>
+  </nav>
+
   <my-app></my-app>
 </body>
 </html>
