@@ -1,8 +1,11 @@
 <div>
   <h3>Lista Menus</h3>
   <form class="form-inline mt-2 mt-md-0">
+    <span>Nombre<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="nombre"/>
+    <span>Categoria<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="categoria"/>
+    <span>Localidad<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="localidad"/>
   </form>
   <ul>

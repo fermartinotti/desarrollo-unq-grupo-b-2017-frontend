@@ -12,7 +12,7 @@ import { Menu } from './menu'
 })
 export class MenuComponent {
   categorias = ['Pizza', 'Pastas', 'Ensaladas', 'Parrilla'];
-  menu : Menu
+  menu : Menu = new Menu({});
 
   constructor(private menuService: MenuService, private route: ActivatedRoute) {}
 
@@ -30,7 +30,7 @@ export class MenuComponent {
 
   onSubmit(f: NgForm) {
     console.log(f)
-    this.menuService.save(f.value).then((data) =>  {
+    this.menuService.save(this.menu).then((data) =>  {
 			console.log(data)
       console.log('data')
 		})

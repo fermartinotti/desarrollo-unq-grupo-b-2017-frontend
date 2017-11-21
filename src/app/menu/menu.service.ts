@@ -25,7 +25,7 @@ export class MenuService {
 	}
 
 	getMenu(id:any): Promise<Menu> { //metodo para traer un Menu
-	  return this.http.get(`${this.menusUrl}/getById/`+id )
+	  return this.http.get(`${this.menusUrl}/`+id )
 	             .toPromise()
 	             .then(response => response.json() as Menu)
 	             .catch(this.handleError);

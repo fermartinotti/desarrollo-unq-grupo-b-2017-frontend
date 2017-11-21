@@ -1,5 +1,6 @@
+import{Serializable} from '../serializable'
 
-export class Menu  {
+export class Menu implements Serializable<Menu> {
 
 	nombre : String;
   descripcion : String;
@@ -15,6 +16,31 @@ export class Menu  {
 	precioCantidadMinima : number;
 	precioCantidadMinima2 : number;
 	cantidadMaxVtasPorDia : number;
+
+	deserialize(input:any) {
+		this.nombre = (input.nombre) ?  input.nombre : ''
+		this.descripcion = (input.descripcion) ?  input.descripcion : ''
+		this.categoria = (input.categoria) ?  input.categoria : ''
+		this.hEntregas = (input.hEntregas) ?  input.hEntregas : ['10:30:00']
+		this.valorDelivery = (input.valorDelivery) ?  input.valorDelivery : 10
+		this.hEnvios = (input.hEnvios) ?  input.hEnvios : ['10:30:00']
+		this.fechaVigenciaDesde = (input.fechaVigenciaDesde) ?  input.fechaVigenciaDesde : new Date()
+		this.fechaVigenciaHasta = (input.fechaVigenciaHasta) ?  input.fechaVigenciaHasta : new Date()
+		this.precio = (input.precio) ?  input.precio : 0
+		this.cantidadMinima = (input.cantidadMinima) ?  input.cantidadMinima : 10
+		this.cantidadMinima2 = (input.cantidadMinima2) ?  input.cantidadMinima2 : 40
+		this.precioCantidadMinima = (input.precioCantidadMinima) ?  input.precioCantidadMinima : 0
+		this.precioCantidadMinima2 = (input.precioCantidadMinima2) ?  input.precioCantidadMinima2 : 0
+		this.cantidadMaxVtasPorDia = (input.cantidadMaxVtasPorDia) ?  input.cantidadMaxVtasPorDia : 0
+
+		return this
+	}
+
+	constructor(input:Object){
+		this.deserialize(input)
+	}
+
+
 }
 //
 // private String nombre;

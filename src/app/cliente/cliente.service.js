@@ -22,10 +22,18 @@ var ClienteService = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    ClienteService.prototype.save = function (cliente) {
-        console.log('Saving cliente ' + JSON.stringify(cliente));
-        console.log(this.clienteUrl + "/create");
-        return this.http.post(this.clienteUrl + "/create", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
+    ClienteService.prototype.update = function (cliente) {
+        console.log('edit cliente ' + JSON.stringify(cliente));
+        console.log(this.clienteUrl + "/edit");
+        return this.http.put(this.clienteUrl + "/edit", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+        ;
+    };
+    ClienteService.prototype.saveSaldo = function (cliente) {
+        console.log('Saving saldo ' + JSON.stringify(cliente));
+        console.log(this.clienteUrl + "/editCreditos");
+        return this.http.put(this.clienteUrl + "/editCreditos", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
         ;

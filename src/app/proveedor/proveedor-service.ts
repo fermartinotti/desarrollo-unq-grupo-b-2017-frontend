@@ -25,6 +25,15 @@ save(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 		.catch(this.handleError);;
   }
 
+//cambiar cuando sepa como traerme el proveedor registrado
+retirarSaldo(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
+	console.log('Saving proveedor ' + JSON.stringify(proveedor));
+	console.log(`${this.proveedorUrl}/create`)
+	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
+		.then(response => response.json())
+		.catch(this.handleError);;
+  }
+
 private getHeaders() {
     let headers = new Headers();
     headers.append('Accept', 'application/json');

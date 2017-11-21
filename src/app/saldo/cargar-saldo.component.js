@@ -9,35 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var cliente_service_1 = require("./cliente.service");
 var router_1 = require("@angular/router");
-var cliente_1 = require("./cliente");
-var ClienteLoginComponent = (function () {
-    function ClienteLoginComponent(clienteService, route) {
+var cliente_service_1 = require("../cliente/cliente.service");
+var SaldoComponent = (function () {
+    function SaldoComponent(clienteService, route) {
         this.clienteService = clienteService;
         this.route = route;
-        this.cliente = new cliente_1.Cliente();
     }
-    ClienteLoginComponent.prototype.editarCliente = function (f) {
+    SaldoComponent.prototype.guardarSaldo = function (f) {
         console.log(f);
-        this.clienteService.update(this.cliente).then(function (data) {
+        this.clienteService.saveSaldo(f.value).then(function (data) {
             console.log(data);
         });
     };
-    return ClienteLoginComponent;
+    return SaldoComponent;
 }());
-ClienteLoginComponent = __decorate([
+SaldoComponent = __decorate([
     core_1.Component({
-        selector: 'cliente-login-view',
-        templateUrl: 'cliente-login.html',
+        selector: 'saldo',
+        templateUrl: 'saldo.html',
     }),
     __metadata("design:paramtypes", [cliente_service_1.ClienteService, router_1.ActivatedRoute])
-], ClienteLoginComponent);
-exports.ClienteLoginComponent = ClienteLoginComponent;
-// onSubmit(f: NgForm) {
-//   console.log(f)
-//   this.menuService.save(f.value).then((data) =>  {
-//     console.log(data)
-//     console.log('data')
-//   })
-//# sourceMappingURL=cliente-login.component.js.map
+], SaldoComponent);
+exports.SaldoComponent = SaldoComponent;
+//# sourceMappingURL=cargar-saldo.component.js.map

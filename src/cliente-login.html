@@ -1,11 +1,11 @@
 <div class="">
-  <form #f="ngForm" (ngSubmit)="crearCliente(f)">
+  <form #f="ngForm" (ngSubmit)="editarCliente(f)">
     <span>Nombre*</span>
     <input type="text" name="cliente.nombre" value="">
     <span>Apellido*</span>
     <input type="text" name="cliente.apellido" value="">
     <span>Email*</span>
     <input type="text" name="cliente.email" value="">
-    <button type="submit" class="btn btn-success">Crear</button>
+    <button type="submit" class="btn btn-success">Actualizar</button>
   </form>
 </div>

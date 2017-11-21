@@ -5,6 +5,8 @@ import { MenuComponent }   from './menu/menu.component';
 import { MenuListComponent }   from './menu/menu-list.component';
 import { ClienteLoginComponent }   from './cliente/cliente-login.component';
 import { ProveedorLoginComponent }   from './proveedor/proveedor-login.component';
+import { SaldoComponent }   from './saldo/cargar-saldo.component';
+import { RetirarSaldoComponent }   from './saldo/retirar-saldo.component';
 
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'menu/:id',  component: MenuComponent },
   { path: 'cliente-login',  component: ClienteLoginComponent },
   { path: 'proveedor-login',  component: ProveedorLoginComponent },
+  { path: 'cargar-saldo',  component: SaldoComponent },
+  { path: 'retirar-saldo',  component: RetirarSaldoComponent },
 ];
 
 @NgModule({

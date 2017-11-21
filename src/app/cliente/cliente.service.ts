@@ -17,10 +17,18 @@ getClientes(): Promise<Cliente[]> { //metodo para traer todos los clientes
              .catch(this.handleError);
 }
 
-save(cliente: Cliente): Promise<Response> { //metodo para guardar un cliente
-	console.log('Saving cliente ' + JSON.stringify(cliente));
-	console.log(`${this.clienteUrl}/create`)
-	return this.http.post(`${this.clienteUrl}/create`, JSON.stringify(cliente), {headers: this.getHeaders()}).toPromise()
+update(cliente: Cliente): Promise<Response> { //metodo para guardar un cliente
+	console.log('edit cliente ' + JSON.stringify(cliente));
+	console.log(`${this.clienteUrl}/edit`)
+	return this.http.put(`${this.clienteUrl}/edit`, JSON.stringify(cliente), {headers: this.getHeaders()}).toPromise()
+		.then(response => response.json())
+		.catch(this.handleError);;
+  }
+
+saveSaldo(cliente: Cliente): Promise<Response> { //metodo para guardar un cliente
+	console.log('Saving saldo ' + JSON.stringify(cliente));
+	console.log(`${this.clienteUrl}/editCreditos`)
+	return this.http.put(`${this.clienteUrl}/editCreditos`, JSON.stringify(cliente), {headers: this.getHeaders()}).toPromise()
 		.then(response => response.json())
 		.catch(this.handleError);;
   }

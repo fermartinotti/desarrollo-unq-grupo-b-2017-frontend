@@ -29,7 +29,7 @@ var MenuService = (function () {
             .catch(this.handleError);
     };
     MenuService.prototype.getMenu = function (id) {
-        return this.http.get(this.menusUrl + "/getById/" + id)
+        return this.http.get(this.menusUrl + "/" + id)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);

@@ -6,6 +6,8 @@ import { MenuComponent }   from './menu/menu.component';
 import { ProveedorLoginComponent }   from './proveedor/proveedor-login.component';
 import { MenuListComponent }   from './menu/menu-list.component';
 import { MainViewComponent }   from './main-view/main-view.component';
+import { SaldoComponent }   from './saldo/cargar-saldo.component';
+import { RetirarSaldoComponent }   from './saldo/retirar-saldo.component';
 import { HttpModule } from '@angular/http';
 import { ClienteService }  from './cliente/cliente.service';
 import { ClienteLoginComponent }  from './cliente/cliente-login.component';
@@ -17,7 +19,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 @NgModule({
   imports: [BrowserModule, HttpModule,AppRoutingModule, FormsModule],
-  declarations: [ AppComponent, MenuComponent, MainViewComponent, MenuListComponent, ClienteLoginComponent, ProveedorLoginComponent],
+  declarations: [ AppComponent, MenuComponent, MainViewComponent, MenuListComponent, ClienteLoginComponent, ProveedorLoginComponent, SaldoComponent,RetirarSaldoComponent,],
   bootstrap: [ AppComponent ],
   providers: [ ClienteService, MenuService, ProveedorService,]
 })

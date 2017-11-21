@@ -12,11 +12,12 @@ import { Cliente } from './cliente'
 })
 export class ClienteLoginComponent {
 
+  cliente : Cliente = new Cliente();
   constructor(private clienteService: ClienteService, private route: ActivatedRoute) {}
 
-crearCliente(f:NgForm){
+editarCliente(f:NgForm){
   console.log(f)
-  this.clienteService.save(f.value).then((data) => {
+  this.clienteService.update(this.cliente).then((data) => {
     console.log(data)
   })
 }

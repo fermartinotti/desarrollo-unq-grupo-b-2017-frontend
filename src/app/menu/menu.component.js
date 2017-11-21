@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var menu_service_1 = require("./menu.service");
 var router_1 = require("@angular/router");
+var menu_1 = require("./menu");
 var MenuComponent = (function () {
     function MenuComponent(menuService, route) {
         this.menuService = menuService;
         this.route = route;
         this.categorias = ['Pizza', 'Pastas', 'Ensaladas', 'Parrilla'];
+        this.menu = new menu_1.Menu({});
     }
     MenuComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -31,7 +33,7 @@ var MenuComponent = (function () {
     };
     MenuComponent.prototype.onSubmit = function (f) {
         console.log(f);
-        this.menuService.save(f.value).then(function (data) {
+        this.menuService.save(this.menu).then(function (data) {
             console.log(data);
             console.log('data');
         });

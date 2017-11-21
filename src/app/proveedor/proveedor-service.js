@@ -31,6 +31,15 @@ var ProveedorService = (function () {
             .catch(this.handleError);
         ;
     };
+    //cambiar cuando sepa como traerme el proveedor registrado
+    ProveedorService.prototype.retirarSaldo = function (proveedor) {
+        console.log('Saving proveedor ' + JSON.stringify(proveedor));
+        console.log(this.proveedorUrl + "/create");
+        return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+        ;
+    };
     ProveedorService.prototype.getHeaders = function () {
         var headers = new http_1.Headers();
         headers.append('Accept', 'application/json');
