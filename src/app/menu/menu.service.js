@@ -11,13 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
+var MenuServiceQuery = (function () {
+    function MenuServiceQuery() {
+    }
+    return MenuServiceQuery;
+}());
+exports.MenuServiceQuery = MenuServiceQuery;
 var MenuService = (function () {
     function MenuService(http) {
         this.http = http;
         this.menusUrl = 'http://localhost:8080/rest/menus'; // URL del backend
     }
-    MenuService.prototype.getMenus = function () {
-        return this.http.get(this.menusUrl + "/getAll")
+    // getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus
+    //   return this.http.get(`${this.menusUrl}/getAll`, {search: query})
+    //              .toPromise()
+    //              .then(response => response.json() as Menu[])
+    //              .catch(this.handleError);
+    // }
+    MenuService.prototype.getMenus = function (query) {
+        console.log(this.menusUrl + "/getByNombre/" + query.nombre + '/' + query.page);
+        return this.http.get(this.menusUrl + "/getByNombre/" + query.nombre + '/' + query.page)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);

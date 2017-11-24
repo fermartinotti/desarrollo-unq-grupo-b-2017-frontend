@@ -2,41 +2,50 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { MenuService } from './menu.service';
+import { MenuServiceQuery } from './menu.service';
 import { Menu } from './menu';
 
 @Component({
   selector: 'menu-list',
   templateUrl: 'menu-list.html'
 })
-
-export class MenuListComponent  {
-
+export class MenuListComponent {
   menulist: Menu[];
-  mySearch: String;
-
-  constructor(private menuService: MenuService) {}
+  query: MenuServiceQuery;
+  constructor(private menuService: MenuService) {
+    this.query = {
+      nombre:    '',
+      categoria: '',
+      localidad: '',
+      page:       1,
+    }
+  }
 
 	ngOnInit() {
-		console.log('Menus')
-		this.getAllMenus()
+		this.getMenus()
 	}
 
-  getAllMenus() {
-    this.menuService.getMenus().then((menuObtained) => {
+  getMenus() {
+    this.menuService.getMenus(this.query).then((menuObtained) => {
       this.menulist = menuObtained
       console.log(menuObtained)
 		})
   }
 
-  nameChange(change:String) {
-    if (!change) {
-      this.getAllMenus()
-    }
-    else {
-      this.menuService.getMenusByName(change).then((menuObtained) => {
-        this.menulist = menuObtained
-        console.log(menuObtained)
-      })
-    }
+  next(){
+    //this.query.page += 1;
+    this.query.page = this.query.page + 1;
+    this.getMenus();
+  }
+
+  previous(){
+    this.query.page -= 1;
+    this.getMenus();
+  }
+
+  changeParam(next: string, attrName: string) {
+    this.query[attrName] = next;
+    console.log(this.query);
+
   }
 }

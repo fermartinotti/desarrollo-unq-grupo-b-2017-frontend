@@ -4,14 +4,29 @@ import { Observable } from 'rxjs/Observable';
 import { Menu } from './menu'
 import 'rxjs/add/operator/toPromise';
 
+export class MenuServiceQuery {
+  nombre:    String;
+  categoria: String;
+  localidad: String;
+  page:      number;
+}
+
 @Injectable()
 export class MenuService {
 	private menusUrl = 'http://localhost:8080/rest/menus';  // URL del backend
 
 	constructor(private http: Http) {}
 
-	getMenus(): Promise<Menu[]> { //metodo para traer todos los Menus
-	  return this.http.get(`${this.menusUrl}/getAll`)
+  // getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus
+  //   return this.http.get(`${this.menusUrl}/getAll`, {search: query})
+  //              .toPromise()
+  //              .then(response => response.json() as Menu[])
+  //              .catch(this.handleError);
+  // }
+
+	getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus
+    console.log(`${this.menusUrl}/getByNombre/` + query.nombre + '/' + query.page)
+	  return this.http.get(`${this.menusUrl}/getByNombre/` + query.nombre + '/' + query.page)
 	             .toPromise()
 	             .then(response => response.json() as Menu[])
 	             .catch(this.handleError);

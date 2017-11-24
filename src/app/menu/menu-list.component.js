@@ -13,29 +13,35 @@ var menu_service_1 = require("./menu.service");
 var MenuListComponent = (function () {
     function MenuListComponent(menuService) {
         this.menuService = menuService;
+        this.query = {
+            nombre: '',
+            categoria: '',
+            localidad: '',
+            page: 1,
+        };
     }
     MenuListComponent.prototype.ngOnInit = function () {
-        console.log('Menus');
-        this.getAllMenus();
+        this.getMenus();
     };
-    MenuListComponent.prototype.getAllMenus = function () {
+    MenuListComponent.prototype.getMenus = function () {
         var _this = this;
-        this.menuService.getMenus().then(function (menuObtained) {
+        this.menuService.getMenus(this.query).then(function (menuObtained) {
             _this.menulist = menuObtained;
             console.log(menuObtained);
         });
     };
-    MenuListComponent.prototype.nameChange = function (change) {
-        var _this = this;
-        if (!change) {
-            this.getAllMenus();
-        }
-        else {
-            this.menuService.getMenusByName(change).then(function (menuObtained) {
-                _this.menulist = menuObtained;
-                console.log(menuObtained);
-            });
-        }
+    MenuListComponent.prototype.next = function () {
+        //this.query.page += 1;
+        this.query.page = this.query.page + 1;
+        this.getMenus();
+    };
+    MenuListComponent.prototype.previous = function () {
+        this.query.page -= 1;
+        this.getMenus();
+    };
+    MenuListComponent.prototype.changeParam = function (next, attrName) {
+        this.query[attrName] = next;
+        console.log(this.query);
     };
     return MenuListComponent;
 }());

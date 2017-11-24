@@ -1,0 +1,3 @@
+"use strict";
+exports.TRANSLATION_ES = "<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n <file source-language=\"en\" datatype=\"plaintext\" original=\"ng2.template\">\n   <body>\n     <trans-unit id=\"ae89a08ab9c77434ca7b8b116498317ecac8f2d9\" datatype=\"html\">\n       <source>WELCOME</source>\n       <target>Welcome message 1!</target>\n     </trans-unit>\n   </body>\n </file>\n</xliff>";
+//# sourceMappingURL=messages.es.js.map

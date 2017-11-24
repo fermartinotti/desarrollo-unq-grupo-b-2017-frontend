@@ -1,17 +1,22 @@
 <div>
   <h3>Lista Menus</h3>
-  <form class="form-inline mt-2 mt-md-0">
+  <form class="form-inline mt-2 mt-md-0" #f="ngForm" (ngSubmit)="getMenus(f)">
     <span>Nombre<label></label></span>
-    <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="nombre"/>
+    <input class="form-control mr-sm-2" type="text" [ngModel]="nombre" (ngModelChange)="changeParam($event, 'nombre')" name="nombre"/>
     <span>Categoria<label></label></span>
-    <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="categoria"/>
+    <input class="form-control mr-sm-2" type="text" [ngModel]="categoria" (ngModelChange)="changeParam($event, 'categoria')"name="categoria"/>
     <span>Localidad<label></label></span>
-    <input class="form-control mr-sm-2" type="text" [ngModel]="mySearch" (ngModelChange)="searchChange($event)" name="localidad"/>
+    <input class="form-control mr-sm-2" type="text" [ngModel]="localidad" (ngModelChange)="changeParam($event, 'localidad')"name="localidad"/>
+    <button type="submit" [disabled]="!f.form.valid" >Buscar</button>
   </form>
   <ul>
     <li *ngFor="let menu of menulist">
       {{ menu.nombre }} <a routerLink="/menu/{{menu.id}}" routerLinkActive="active">Editar Menu</a>
     </li>
   </ul>
+  <button (click)="previous()">&lt;&lt;</button>
+  <span>{{query.page}}</span>
+
+  <button (click)="next()">&gt;&gt;</button>
   <a routerLink="/menu" routerLinkActive="active">Crear Menu</a>
 </div>
