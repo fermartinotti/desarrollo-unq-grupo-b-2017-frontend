@@ -1,5 +1,6 @@
 export class Cliente  {
 
+	id : number;
 	cuit : number;
 	nombre : String;
 	apellido : String;

@@ -4,14 +4,15 @@ var Menu = (function () {
         this.deserialize(input);
     }
     Menu.prototype.deserialize = function (input) {
+        this.id = (input.id) ? input.nombre : '';
         this.nombre = (input.nombre) ? input.nombre : '';
         this.descripcion = (input.descripcion) ? input.descripcion : '';
         this.categoria = (input.categoria) ? input.categoria : '';
         // this.hEntregas = (input.hEntregas) ?  input.hEntregas : []
         // this.hEnvios = (input.hEnvios) ?  input.hEnvios : []
         this.valorDelivery = (input.valorDelivery) ? input.valorDelivery : 10;
-        this.fechaVigenciaDesde = (input.fechaVigenciaDesde) ? input.fechaVigenciaDesde : new Date();
-        this.fechaVigenciaHasta = (input.fechaVigenciaHasta) ? input.fechaVigenciaHasta : new Date();
+        this.fechaVigenciaDesde = (input.fechaVigenciaDesde) ? input.fechaVigenciaDesde.toISOString() : new Date().toISOString();
+        this.fechaVigenciaHasta = (input.fechaVigenciaHasta) ? input.fechaVigenciaHasta.toISOString() : new Date().toISOString();
         this.precio = (input.precio) ? input.precio : 0;
         this.cantidadMinima = (input.cantidadMinima) ? input.cantidadMinima : 10;
         this.cantidadMinima2 = (input.cantidadMinima2) ? input.cantidadMinima2 : 40;

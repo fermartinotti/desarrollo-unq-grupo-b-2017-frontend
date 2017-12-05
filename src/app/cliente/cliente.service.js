@@ -16,25 +16,45 @@ var ClienteService = (function () {
         this.http = http;
         this.clienteUrl = 'http://localhost:8080/rest/clientes'; // URL del backend
     }
+    ClienteService.prototype.getCliente = function (id) {
+        return this.http.get(this.clienteUrl + "/getById" + id)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     ClienteService.prototype.getClientes = function () {
         return this.http.get(this.clienteUrl + "/getAll")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    ClienteService.prototype.update = function (cliente) {
-        console.log('edit cliente ' + JSON.stringify(cliente));
-        console.log(this.clienteUrl + "/edit");
-        return this.http.put(this.clienteUrl + "/edit", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
-            .then(function (response) { return response.json(); })
+    ClienteService.prototype.getSaldo = function (id) {
+        console.log(this.clienteUrl + "/getCreditos");
+        return this.http.get(this.clienteUrl + "/getCreditos/" + id)
+            .toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
         ;
     };
     ClienteService.prototype.saveSaldo = function (cliente) {
-        console.log('Saving saldo ' + JSON.stringify(cliente));
-        console.log(this.clienteUrl + "/editCreditos");
-        return this.http.put(this.clienteUrl + "/editCreditos", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
-            .then(function (response) { return response.json(); })
+        console.log(this.clienteUrl + "/cargarCreditos");
+        return this.http.put(this.clienteUrl + "/cargarCreditos", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+        ;
+    };
+    ClienteService.prototype.save = function (cliente) {
+        console.log('Saving cliente ' + JSON.stringify(cliente));
+        console.log(this.clienteUrl + "/create");
+        return this.http.post(this.clienteUrl + "/create", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+    };
+    ClienteService.prototype.update = function (cliente) {
+        console.log('edit cliente ' + JSON.stringify(cliente));
+        console.log(this.clienteUrl + "/edit");
+        return this.http.put(this.clienteUrl + "/edit", JSON.stringify(cliente), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
         ;
     };

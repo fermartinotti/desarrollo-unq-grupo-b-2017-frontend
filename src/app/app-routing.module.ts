@@ -11,13 +11,14 @@ import { PedidoComponent }   from './pedido/pedido.component';
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '',  component: MainViewComponent },
   { path: 'menu',  component: MenuComponent },
-  { path: 'menu-list',  component: MenuListComponent },
   { path: 'menu/:id',  component: MenuComponent },
+  { path: 'menu-list',  component: MenuListComponent },
   { path: 'cliente-login',  component: ClienteLoginComponent },
+  { path: 'cliente-login/:id',  component: ClienteLoginComponent },
   { path: 'proveedor-login',  component: ProveedorLoginComponent },
+  { path: 'proveedor-login/:id',  component: ProveedorLoginComponent },
   { path: 'cargar-saldo',  component: SaldoComponent },
   { path: 'retirar-saldo',  component: RetirarSaldoComponent },
   { path: 'pedido',  component: PedidoComponent },

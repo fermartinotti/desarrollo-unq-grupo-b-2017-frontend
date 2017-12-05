@@ -10,15 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var proveedor_service_1 = require("./proveedor-service");
+var proveedor_1 = require("./proveedor");
 var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
 var ProveedorLoginComponent = (function () {
-    function ProveedorLoginComponent(proveedorService, route) {
+    function ProveedorLoginComponent(proveedorService, route, router) {
         this.proveedorService = proveedorService;
         this.route = route;
+        this.router = router;
+        this.proveedor = new proveedor_1.Proveedor();
     }
-    ProveedorLoginComponent.prototype.guardarProveedor = function (f) {
+    ProveedorLoginComponent.prototype.create = function (f) {
+        var _this = this;
         console.log(f);
-        this.proveedorService.save(f.value).then(function (data) {
+        this.proveedorService.save(this.proveedor).then(function (data) {
+            console.log(_this.router);
+            console.log(data);
+            // console.log(data.json())
+            console.log(data.json().id);
+            //window.localStorage.setItem('clienteId', String(data.json().id))
+            localStorage.setItem('proveedorId', String(data.json().id));
+            //console.log(localStorage.getItem('proveedorId', String(data.json().id)))
+            _this.router.navigateByUrl('/proveedor-login/' + data.json().id);
+        });
+    };
+    ProveedorLoginComponent.prototype.update = function (f) {
+        console.log(f);
+        console.log(localStorage.getItem('proveedorId'), this.proveedor.creditos);
+        this.proveedor.id = Number(localStorage.getItem('proveedorId'));
+        this.proveedorService.update(this.proveedor).then(function (data) {
             console.log(data);
         });
     };
@@ -29,7 +49,7 @@ ProveedorLoginComponent = __decorate([
         selector: 'proveedor-login',
         templateUrl: 'proveedor-login.html',
     }),
-    __metadata("design:paramtypes", [proveedor_service_1.ProveedorService, router_1.ActivatedRoute])
+    __metadata("design:paramtypes", [proveedor_service_1.ProveedorService, router_1.ActivatedRoute, router_2.Router])
 ], ProveedorLoginComponent);
 exports.ProveedorLoginComponent = ProveedorLoginComponent;
 //# sourceMappingURL=proveedor-login.component.js.map

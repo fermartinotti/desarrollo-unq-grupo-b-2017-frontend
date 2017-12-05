@@ -6,7 +6,7 @@
       <h3 lalala="jojojo">Alta de Menu</h3>
       <h1 i18n>WELCOME</h1>
       <div>
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <form #f="ngForm">
           <!-- *ngIf="menu" -->
           <span>Nombre<label>*</label></span>
            <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" >
@@ -40,7 +40,9 @@
            </select>
 
            <!-- {{categorias}} -->
-           <button type="submit" [disabled]="!f.form.valid" >Crear Menu</button>
+           <button *ngIf='menu.id' (click)="updateMenu(f)" class="btn btn-info">Actualizar</button>
+           <button *ngIf='!menu.id' [disabled]="!f.form.valid" (click)="createMenu(f)">Crear</button>
+           <!-- <button type="submit" [disabled]="!f.form.valid" >Crear Menu</button> -->
         </form>
       </div>
   </div>

@@ -5,10 +5,10 @@ import { Menu } from './menu'
 import 'rxjs/add/operator/toPromise';
 
 export class MenuServiceQuery {
-  nombre:    String;
-  categoria: String;
-  localidad: String;
-  page:      number;
+  nombre:     String;
+  categoria:  String;
+  localidad:  String;
+  pageNumber: number;
 }
 
 @Injectable()
@@ -17,16 +17,11 @@ export class MenuService {
 
 	constructor(private http: Http) {}
 
-  // getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus
-  //   return this.http.get(`${this.menusUrl}/getAll`, {search: query})
-  //              .toPromise()
-  //              .then(response => response.json() as Menu[])
-  //              .catch(this.handleError);
-  // }
-
-	getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus
-    console.log(`${this.menusUrl}/getByNombre/` + query.nombre + '/' + query.page)
-	  return this.http.get(`${this.menusUrl}/getByNombre/` + query.nombre + '/' + query.page)
+  getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus del filtro
+    console.log(Object.keys(query))
+    var acumulado = Object.keys(query).reduce((accumulator, currentValue, currentIndex, array) => { return query[currentValue] !== '' ? accumulator + currentValue + '=' + query[currentValue] + '&' : accumulator }, '?')
+    console.log(`${this.menusUrl}/search/` + acumulado)
+	  return this.http.get(`${this.menusUrl}/search/` + acumulado)
 	             .toPromise()
 	             .then(response => response.json() as Menu[])
 	             .catch(this.handleError);
@@ -50,15 +45,15 @@ export class MenuService {
 	    console.log('Saving menu ' + JSON.stringify(menu));
 			console.log(`${this.menusUrl}/create`)
 	    return this.http.post(`${this.menusUrl}/create`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()
-				.then(response => response.json())
-				.catch(this.handleError);;
+				.then(response => response)
+				.catch(this.handleError);
 	}
 
-	update(menu: Menu, id:any): Promise<Response> {
+	update(menu: Menu): Promise<Response> {
 	    console.log('updating menu ' + JSON.stringify(menu));
-			console.log(`${this.menusUrl}/update`)
-	    return this.http.put(`${this.menusUrl}/update`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()
-				.then(response => response.json())
+			console.log(`${this.menusUrl}/edit`)
+	    return this.http.put(`${this.menusUrl}/edit`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()
+				.then(response => response)
 				.catch(this.handleError);;
 	}
 

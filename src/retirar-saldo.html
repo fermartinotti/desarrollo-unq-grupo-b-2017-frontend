@@ -1,8 +1,10 @@
 <div class="">
   <h3>Retiro de Saldo</h3>
   <form #f="ngForm" (ngSubmit)="retirarSaldo(f)">
-    <span>Saldo*</span>
-    <input type="number" name="proveedor.creditos" value="">
+    <span>Creditos No Disponibles*</span>
+    <input [(ngModel)]='proveedor.creditosNoDisponibles' id="creditosNoDisponibles" name="creditosNoDisponibles" #nombre="ngModel" ngModel required >
+    <span>Creditos*</span>
+    <input [(ngModel)]='proveedor.creditos' id="creditos" name="creditos" #nombre="ngModel" ngModel required >
     <button type="submit" class="btn btn-success">Retirar Saldo</button>
   </form>
 </div>

@@ -16,13 +16,14 @@ var cargar_saldo_component_1 = require("./saldo/cargar-saldo.component");
 var retirar_saldo_component_1 = require("./saldo/retirar-saldo.component");
 var pedido_component_1 = require("./pedido/pedido.component");
 var routes = [
-    // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '', component: main_view_component_1.MainViewComponent },
     { path: 'menu', component: menu_component_1.MenuComponent },
-    { path: 'menu-list', component: menu_list_component_1.MenuListComponent },
     { path: 'menu/:id', component: menu_component_1.MenuComponent },
+    { path: 'menu-list', component: menu_list_component_1.MenuListComponent },
     { path: 'cliente-login', component: cliente_login_component_1.ClienteLoginComponent },
+    { path: 'cliente-login/:id', component: cliente_login_component_1.ClienteLoginComponent },
     { path: 'proveedor-login', component: proveedor_login_component_1.ProveedorLoginComponent },
+    { path: 'proveedor-login/:id', component: proveedor_login_component_1.ProveedorLoginComponent },
     { path: 'cargar-saldo', component: cargar_saldo_component_1.SaldoComponent },
     { path: 'retirar-saldo', component: retirar_saldo_component_1.RetirarSaldoComponent },
     { path: 'pedido', component: pedido_component_1.PedidoComponent },

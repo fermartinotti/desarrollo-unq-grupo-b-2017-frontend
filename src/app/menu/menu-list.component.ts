@@ -17,7 +17,7 @@ export class MenuListComponent {
       nombre:    '',
       categoria: '',
       localidad: '',
-      page:       1,
+      pageNumber: 1,
     }
   }
 
@@ -34,12 +34,12 @@ export class MenuListComponent {
 
   next(){
     //this.query.page += 1;
-    this.query.page = this.query.page + 1;
+    this.query.pageNumber = this.query.pageNumber + 1;
     this.getMenus();
   }
 
   previous(){
-    this.query.page -= 1;
+    this.query.pageNumber -= 1;
     this.getMenus();
   }
 

@@ -22,15 +22,11 @@ var MenuService = (function () {
         this.http = http;
         this.menusUrl = 'http://localhost:8080/rest/menus'; // URL del backend
     }
-    // getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus
-    //   return this.http.get(`${this.menusUrl}/getAll`, {search: query})
-    //              .toPromise()
-    //              .then(response => response.json() as Menu[])
-    //              .catch(this.handleError);
-    // }
     MenuService.prototype.getMenus = function (query) {
-        console.log(this.menusUrl + "/getByNombre/" + query.nombre + '/' + query.page);
-        return this.http.get(this.menusUrl + "/getByNombre/" + query.nombre + '/' + query.page)
+        console.log(Object.keys(query));
+        var acumulado = Object.keys(query).reduce(function (accumulator, currentValue, currentIndex, array) { return query[currentValue] !== '' ? accumulator + currentValue + '=' + query[currentValue] + '&' : accumulator; }, '?');
+        console.log(this.menusUrl + "/search/" + acumulado);
+        return this.http.get(this.menusUrl + "/search/" + acumulado)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
@@ -51,15 +47,14 @@ var MenuService = (function () {
         console.log('Saving menu ' + JSON.stringify(menu));
         console.log(this.menusUrl + "/create");
         return this.http.post(this.menusUrl + "/create", JSON.stringify(menu), { headers: this.getHeaders() }).toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
             .catch(this.handleError);
-        ;
     };
-    MenuService.prototype.update = function (menu, id) {
+    MenuService.prototype.update = function (menu) {
         console.log('updating menu ' + JSON.stringify(menu));
-        console.log(this.menusUrl + "/update");
-        return this.http.put(this.menusUrl + "/update", JSON.stringify(menu), { headers: this.getHeaders() }).toPromise()
-            .then(function (response) { return response.json(); })
+        console.log(this.menusUrl + "/edit");
+        return this.http.put(this.menusUrl + "/edit", JSON.stringify(menu), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
         ;
     };

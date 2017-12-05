@@ -11,13 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var proveedor_service_1 = require("../proveedor/proveedor-service");
+var proveedor_1 = require("../proveedor/proveedor");
 var RetirarSaldoComponent = (function () {
     function RetirarSaldoComponent(proveedorService, route) {
         this.proveedorService = proveedorService;
         this.route = route;
+        this.proveedor = new proveedor_1.Proveedor();
     }
     RetirarSaldoComponent.prototype.retirarSaldo = function (f) {
         console.log(f);
+        console.log(localStorage.getItem('proveedorId'), this.proveedor.creditos);
+        this.proveedor.id = Number(localStorage.getItem('proveedorId'));
         this.proveedorService.retirarSaldo(f.value).then(function (data) {
             console.log(data);
         });

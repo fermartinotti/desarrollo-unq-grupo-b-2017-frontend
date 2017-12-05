@@ -7,15 +7,19 @@
     <input class="form-control mr-sm-2" type="text" [ngModel]="categoria" (ngModelChange)="changeParam($event, 'categoria')"name="categoria"/>
     <span>Localidad<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="localidad" (ngModelChange)="changeParam($event, 'localidad')"name="localidad"/>
-    <button type="submit" [disabled]="!f.form.valid" >Buscar</button>
+    <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary">Buscar</button>
   </form>
   <ul>
     <li *ngFor="let menu of menulist">
-      {{ menu.nombre }} <a routerLink="/menu/{{menu.id}}" routerLinkActive="active">Editar Menu</a>
+      <span>{{ menu.nombre }}</span>
+      <span>{{ menu.precio }}</span>
+      <input type="checkbox">
+      <!-- <span>{{menu.isSelected}}</span> -->
+      <a routerLink="/menu/{{menu.id}}" routerLinkActive="active">Editar Menu</a>
     </li>
   </ul>
   <button (click)="previous()">&lt;&lt;</button>
-  <span>{{query.page}}</span>
+  <span>{{query.pageNumber}}</span>
 
   <button (click)="next()">&gt;&gt;</button>
   <a routerLink="/menu" routerLinkActive="active">Crear Menu</a>

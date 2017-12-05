@@ -14,6 +14,7 @@ var menu_list_component_1 = require("./menu/menu-list.component");
 var main_view_component_1 = require("./main-view/main-view.component");
 var cargar_saldo_component_1 = require("./saldo/cargar-saldo.component");
 var pedido_component_1 = require("./pedido/pedido.component");
+var pedido_service_1 = require("./pedido/pedido-service");
 var retirar_saldo_component_1 = require("./saldo/retirar-saldo.component");
 var http_1 = require("@angular/http");
 var cliente_service_1 = require("./cliente/cliente.service");
@@ -30,9 +31,10 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_module_1.AppRoutingModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent, menu_component_1.MenuComponent, main_view_component_1.MainViewComponent, menu_list_component_1.MenuListComponent, cliente_login_component_1.ClienteLoginComponent, proveedor_login_component_1.ProveedorLoginComponent, cargar_saldo_component_1.SaldoComponent, retirar_saldo_component_1.RetirarSaldoComponent, pedido_component_1.PedidoComponent],
+        declarations: [app_component_1.AppComponent, menu_component_1.MenuComponent, main_view_component_1.MainViewComponent, menu_list_component_1.MenuListComponent, cliente_login_component_1.ClienteLoginComponent,
+            proveedor_login_component_1.ProveedorLoginComponent, cargar_saldo_component_1.SaldoComponent, retirar_saldo_component_1.RetirarSaldoComponent, pedido_component_1.PedidoComponent],
         bootstrap: [app_component_1.AppComponent],
-        providers: [cliente_service_1.ClienteService, menu_service_1.MenuService, proveedor_service_1.ProveedorService,]
+        providers: [cliente_service_1.ClienteService, menu_service_1.MenuService, proveedor_service_1.ProveedorService, pedido_service_1.PedidoService]
     })
 ], AppModule);
 exports.AppModule = AppModule;

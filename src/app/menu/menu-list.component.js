@@ -17,7 +17,7 @@ var MenuListComponent = (function () {
             nombre: '',
             categoria: '',
             localidad: '',
-            page: 1,
+            pageNumber: 1,
         };
     }
     MenuListComponent.prototype.ngOnInit = function () {
@@ -32,11 +32,11 @@ var MenuListComponent = (function () {
     };
     MenuListComponent.prototype.next = function () {
         //this.query.page += 1;
-        this.query.page = this.query.page + 1;
+        this.query.pageNumber = this.query.pageNumber + 1;
         this.getMenus();
     };
     MenuListComponent.prototype.previous = function () {
-        this.query.page -= 1;
+        this.query.pageNumber -= 1;
         this.getMenus();
     };
     MenuListComponent.prototype.changeParam = function (next, attrName) {

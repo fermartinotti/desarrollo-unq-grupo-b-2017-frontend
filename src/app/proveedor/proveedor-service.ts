@@ -21,16 +21,25 @@ save(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 	console.log('Saving proveedor ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/create`)
 	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
-		.then(response => response.json())
+		.then(response => response)
 		.catch(this.handleError);;
   }
+
+update(proveedor: Proveedor): Promise<Response> { //metodo para actualizar un proveedor
+	console.log('edit proveedor ' + JSON.stringify(proveedor));
+	console.log(`${this.proveedorUrl}/edit`)
+	return this.http.put(`${this.proveedorUrl}/edit`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
+		.then(response => response)
+		.catch(this.handleError);;
+  }
+
 
 //cambiar cuando sepa como traerme el proveedor registrado
 retirarSaldo(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 	console.log('Saving proveedor ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/create`)
 	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
-		.then(response => response.json())
+		.then(response => response)
 		.catch(this.handleError);;
   }
 

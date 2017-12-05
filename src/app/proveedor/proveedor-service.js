@@ -27,7 +27,15 @@ var ProveedorService = (function () {
         console.log('Saving proveedor ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/create");
         return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+        ;
+    };
+    ProveedorService.prototype.update = function (proveedor) {
+        console.log('edit proveedor ' + JSON.stringify(proveedor));
+        console.log(this.proveedorUrl + "/edit");
+        return this.http.put(this.proveedorUrl + "/edit", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
         ;
     };
@@ -36,7 +44,7 @@ var ProveedorService = (function () {
         console.log('Saving proveedor ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/create");
         return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
             .catch(this.handleError);
         ;
     };

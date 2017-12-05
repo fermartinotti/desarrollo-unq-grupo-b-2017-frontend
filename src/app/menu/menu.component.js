@@ -12,17 +12,19 @@ var core_1 = require("@angular/core");
 var menu_service_1 = require("./menu.service");
 var router_1 = require("@angular/router");
 var menu_1 = require("./menu");
+var router_2 = require("@angular/router");
 var MenuComponent = (function () {
-    function MenuComponent(menuService, route) {
+    function MenuComponent(menuService, route, router) {
         this.menuService = menuService;
         this.route = route;
+        this.router = router;
         this.categorias = ['Pizza', 'Pastas', 'Ensaladas', 'Parrilla'];
         this.menu = new menu_1.Menu({});
     }
     MenuComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            console.log(params['id']);
+            //console.log(params['id'])
             if (params['id']) {
                 _this.menuService.getMenu(params['id']).then(function (menuObtained) {
                     _this.menu = menuObtained;
@@ -35,7 +37,20 @@ var MenuComponent = (function () {
         console.log(f);
         this.menuService.save(this.menu).then(function (data) {
             console.log(data);
-            console.log('data');
+        });
+    };
+    MenuComponent.prototype.createMenu = function (f) {
+        var _this = this;
+        console.log(f);
+        this.menuService.save(this.menu).then(function (data) {
+            console.log(_this.router);
+            _this.router.navigateByUrl('/menu/' + data.json().id);
+        });
+    };
+    MenuComponent.prototype.updateMenu = function (f) {
+        console.log(f);
+        this.menuService.update(this.menu).then(function (data) {
+            console.log(data);
         });
     };
     return MenuComponent;
@@ -45,7 +60,7 @@ MenuComponent = __decorate([
         selector: 'menu-view',
         templateUrl: 'menu-view.html',
     }),
-    __metadata("design:paramtypes", [menu_service_1.MenuService, router_1.ActivatedRoute])
+    __metadata("design:paramtypes", [menu_service_1.MenuService, router_1.ActivatedRoute, router_2.Router])
 ], MenuComponent);
 exports.MenuComponent = MenuComponent;
 //# sourceMappingURL=menu.component.js.map

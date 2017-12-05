@@ -1,5 +1,5 @@
 <div class="">
-  <form #f="ngForm" (ngSubmit)="editarCliente(f)">
+  <form #f="ngForm">
     <span>Nombre*</span>
     <input [(ngModel)]='cliente.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required >
     <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
@@ -28,6 +28,11 @@
      </div>
     </div>
     <!-- <input type="text" name="cliente.email" value=""> -->
-    <button type="submit" class="btn btn-success">Actualizar</button>
+    <button (click)="update(f)" class="btn btn-info">Actualizar</button>
+    <button *ngIf='!cliente.id' [disabled]="!f.form.valid" (click)="create(f)" class="btn btn-success">Crear</button>
+
+    <!-- <button *ngIf='menu.id' (click)="updateMenu(f)">Actualizar</button>
+    <button *ngIf='!menu.id' [disabled]="!f.form.valid" (click)="createMenu(f)">Crear</button> -->
+
   </form>
 </div>
