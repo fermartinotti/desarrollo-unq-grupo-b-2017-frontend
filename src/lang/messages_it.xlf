@@ -1,0 +1,12 @@
+<trans-unit id="ae89a08ab9c77434ca7b8b116498317ecac8f2d9" datatype="html">
+  <source>WELCOME</source>
+  <target>Benbenuto</target>
+</trans-unit>
+<trans-unit id="0660f55e4b483f47e4b93e12faaefc4bae8911ca" datatype="html">
+  <source>Menu List</source>
+  <target>Menu lista</target>
+</trans-unit>
+<trans-unit id="978a6ddeceb859199532eb3b2f68d808f542a7e7" datatype="html">
+  <source>noFilter</source>
+  <target>no filtro</target>
+</trans-unit>

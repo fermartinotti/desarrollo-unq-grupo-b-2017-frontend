@@ -1,0 +1,12 @@
+<div class="">
+  <form #f="ngForm">
+    <span>Nombre*</span>
+    <input [(ngModel)]='proveedor.nombre' type="text" name="proveedor.nombre" value="" id="nombre" #nombre="ngModel" ngModel required>
+     <!-- <span>Creditos*</span>
+    <input type="number" name="proveedor.creditos" value=""> -->
+    <span>Email*</span>
+    <input [(ngModel)]='proveedor.email' type="text" name="proveedor.email" value="" id="email" #email="ngModel" ngModel required>
+    <button (click)="update(f)" class="btn btn-info">Actualizar</button>
+    <button (click)="create(f)" class="btn btn-success">Crear</button>
+  </form>
+</div>

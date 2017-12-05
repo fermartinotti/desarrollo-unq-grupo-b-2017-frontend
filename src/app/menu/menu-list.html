@@ -1,14 +1,14 @@
 <div>
 
-  <h3 i18n>Menu List</h3>
+  <h3 i18n="menuList">Lista Menus</h3>
   <form class="form-inline mt-2 mt-md-0" #f="ngForm" (ngSubmit)="getMenus(f)">
-    <span i18n>Name<label></label></span>
-    <input i18n-placeholder placeholder="noFilter" class="form-control mr-sm-2" type="text" [ngModel]="nombre" (ngModelChange)="changeParam($event, 'nombre')" name="nombre"/>
-    <span i18n>Category<label></label></span>
+    <span>Nombre<label></label></span>
+    <input class="form-control mr-sm-2" type="text" [ngModel]="nombre" (ngModelChange)="changeParam($event, 'nombre')" name="nombre"/>
+    <span>Categoria<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="categoria" (ngModelChange)="changeParam($event, 'categoria')"name="categoria"/>
-    <span i18n>Locate<label></label></span>
+    <span>Localidad<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="localidad" (ngModelChange)="changeParam($event, 'localidad')"name="localidad"/>
-    <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary" i18n>Search</button>
+    <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary">Buscar</button>
   </form>
   <ul>
     <li *ngFor="let menu of menulist">
@@ -16,12 +16,12 @@
       <span>{{ menu.precio }}</span>
       <input type="checkbox">
       <!-- <span>{{menu.isSelected}}</span> -->
-      <a routerLink="/menu/{{menu.id}}" routerLinkActive="active" i18n>Edit Menu</a>
+      <a routerLink="/menu/{{menu.id}}" routerLinkActive="active">Editar Menu</a>
     </li>
   </ul>
   <button (click)="previous()">&lt;&lt;</button>
   <span>{{query.pageNumber}}</span>
 
   <button (click)="next()">&gt;&gt;</button>
-  <a routerLink="/menu" routerLinkActive="active" i18n>Create Menu</a>
+  <a routerLink="/menu" routerLinkActive="active">Crear Menu</a>
 </div>

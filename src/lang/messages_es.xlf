@@ -1,0 +1,40 @@
+<trans-unit id="ae89a08ab9c77434ca7b8b116498317ecac8f2d9" datatype="html">
+  <source>WELCOME</source>
+  <target>Bienvenido</target>
+</trans-unit>
+<trans-unit id="0660f55e4b483f47e4b93e12faaefc4bae8911ca" datatype="html">
+  <source>Menu List</source>
+  <target>Lista Menues</target>
+</trans-unit>
+<trans-unit id="978a6ddeceb859199532eb3b2f68d808f542a7e7" datatype="html">
+  <source>noFilter</source>
+  <target>Sin Filtro</target>
+</trans-unit>
+<trans-unit id="16c9d3da0c2b6cc8b4f27121776e004cfba0ccda" datatype="html">
+  <source>Menu List</source>
+  <target>Listado de menues</target>
+</trans-unit>
+<trans-unit id="1bbec51b7d348765e42b4a9f4fbbce7ef10d152c" datatype="html">
+  <source>Name</source>
+  <target>Nombre</target>
+</trans-unit>
+<trans-unit id="7d961885d911dd60b3fe7748018f072fa265f616" datatype="html">
+  <source>Category</source>
+  <target>Categoria</target>
+</trans-unit>
+<trans-unit id="82af531d86321c843ef08b966df5278f6152adb2" datatype="html">
+  <source>Locate</source>
+  <target>Localidad</target>
+</trans-unit>
+<trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
+  <source>Search</source>
+  <target>Buscar</target>
+</trans-unit>
+<trans-unit id="0aa6555cc01b75e51c1c6b9fc7cda0dfb2ecfbc2" datatype="html">
+  <source>Edit Menu</source>
+  <target>Editar Menu</target>
+</trans-unit>
+<trans-unit id="bbb35501b62b662ce71bf7c79bbebea2ad22ddac" datatype="html">
+  <source>Create Menu</source>
+  <target>Crear Menu</target>
+</trans-unit>

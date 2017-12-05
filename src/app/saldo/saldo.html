@@ -1,0 +1,9 @@
+<div class="">
+  <h3>Recarga de Saldo</h3>
+  <h2 class="float-right">Saldo Actual: {{cliente.creditos}}</h2>
+  <form #f="ngForm" (ngSubmit)="guardarSaldo(f)">
+    <span>Recargar*</span>
+    <input [(ngModel)]='recarga' id="creditos" name="creditos" #nombre="ngModel" ngModel type='number' required >
+    <button type="submit" class="btn btn-success">Cargar Saldo</button>
+  </form>
+</div>
