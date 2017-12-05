@@ -1,5 +1,6 @@
 <div>
-  <h3>Lista Menus</h3>
+
+  <h3 i18n="menuList">Lista Menus</h3>
   <form class="form-inline mt-2 mt-md-0" #f="ngForm" (ngSubmit)="getMenus(f)">
     <span>Nombre<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="nombre" (ngModelChange)="changeParam($event, 'nombre')" name="nombre"/>
