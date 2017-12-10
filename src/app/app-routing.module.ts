@@ -8,6 +8,7 @@ import { ProveedorLoginComponent }   from './proveedor/proveedor-login.component
 import { SaldoComponent }   from './saldo/cargar-saldo.component';
 import { RetirarSaldoComponent }   from './saldo/retirar-saldo.component';
 import { PedidoComponent }   from './pedido/pedido.component';
+import { CallbackComponent } from './callback/callback.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'cargar-saldo',  component: SaldoComponent },
   { path: 'retirar-saldo',  component: RetirarSaldoComponent },
   { path: 'pedido',  component: PedidoComponent },
+  { path: 'callback',  component: CallbackComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

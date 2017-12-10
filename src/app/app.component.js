@@ -10,9 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var cliente_service_1 = require("./cliente/cliente.service");
+var auth0_service_1 = require("./auth0/auth0.service");
 var AppComponent = (function () {
-    function AppComponent(clienteService) {
+    function AppComponent(clienteService, auth) {
         this.clienteService = clienteService;
+        this.auth = auth;
+        auth.handleAuthentication();
     }
     AppComponent.prototype.ngOnInit = function () {
         console.log('clientes');
@@ -25,10 +28,9 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        //template: `<router-outlet></router-outlet>`,
         templateUrl: 'app.component.html',
     }),
-    __metadata("design:paramtypes", [cliente_service_1.ClienteService])
+    __metadata("design:paramtypes", [cliente_service_1.ClienteService, auth0_service_1.AuthService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

@@ -33,7 +33,7 @@ create(f:NgForm){
 
 update(f:NgForm){
   console.log(f)
-  console.log(localStorage.getItem('clienteId'),this.cliente.creditos)
+  console.log(localStorage.getItem('clienteId'),this.cliente.creditos + "22")
   this.cliente.id = Number(localStorage.getItem('clienteId'))
   this.clienteService.update(this.cliente).then((data) => {
     console.log(data)

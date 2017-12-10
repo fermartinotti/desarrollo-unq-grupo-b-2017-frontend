@@ -36,7 +36,7 @@ var ClienteLoginComponent = (function () {
     };
     ClienteLoginComponent.prototype.update = function (f) {
         console.log(f);
-        console.log(localStorage.getItem('clienteId'), this.cliente.creditos);
+        console.log(localStorage.getItem('clienteId'), this.cliente.creditos + "22");
         this.cliente.id = Number(localStorage.getItem('clienteId'));
         this.clienteService.update(this.cliente).then(function (data) {
             console.log(data);

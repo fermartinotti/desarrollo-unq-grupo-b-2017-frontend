@@ -16,13 +16,16 @@ var cargar_saldo_component_1 = require("./saldo/cargar-saldo.component");
 var pedido_component_1 = require("./pedido/pedido.component");
 var pedido_service_1 = require("./pedido/pedido-service");
 var retirar_saldo_component_1 = require("./saldo/retirar-saldo.component");
+var callback_component_1 = require("./callback/callback.component");
+var cliente_login_component_1 = require("./cliente/cliente-login.component");
 var http_1 = require("@angular/http");
 var cliente_service_1 = require("./cliente/cliente.service");
-var cliente_login_component_1 = require("./cliente/cliente-login.component");
 var menu_service_1 = require("./menu/menu.service");
 var proveedor_service_1 = require("./proveedor/proveedor-service");
 var app_routing_module_1 = require("./app-routing.module");
 var forms_1 = require("@angular/forms"); // <-- NgModel lives here
+var auth0_service_1 = require("./auth0/auth0.service");
+var api_service_1 = require("./api/api.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,11 +33,33 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_module_1.AppRoutingModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent, menu_component_1.MenuComponent, main_view_component_1.MainViewComponent, menu_list_component_1.MenuListComponent, cliente_login_component_1.ClienteLoginComponent,
-            proveedor_login_component_1.ProveedorLoginComponent, cargar_saldo_component_1.SaldoComponent, retirar_saldo_component_1.RetirarSaldoComponent, pedido_component_1.PedidoComponent],
+        imports: [
+            platform_browser_1.BrowserModule,
+            http_1.HttpModule,
+            app_routing_module_1.AppRoutingModule,
+            forms_1.FormsModule
+        ],
+        declarations: [
+            app_component_1.AppComponent,
+            menu_component_1.MenuComponent,
+            main_view_component_1.MainViewComponent,
+            menu_list_component_1.MenuListComponent,
+            cliente_login_component_1.ClienteLoginComponent,
+            proveedor_login_component_1.ProveedorLoginComponent,
+            cargar_saldo_component_1.SaldoComponent,
+            retirar_saldo_component_1.RetirarSaldoComponent,
+            pedido_component_1.PedidoComponent,
+            callback_component_1.CallbackComponent
+        ],
         bootstrap: [app_component_1.AppComponent],
-        providers: [cliente_service_1.ClienteService, menu_service_1.MenuService, proveedor_service_1.ProveedorService, pedido_service_1.PedidoService]
+        providers: [
+            cliente_service_1.ClienteService,
+            menu_service_1.MenuService,
+            proveedor_service_1.ProveedorService,
+            pedido_service_1.PedidoService,
+            auth0_service_1.AuthService,
+            api_service_1.ApiService
+        ]
     })
 ], AppModule);
 exports.AppModule = AppModule;

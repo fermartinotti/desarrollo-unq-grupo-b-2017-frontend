@@ -50,6 +50,8 @@ export class MenuService {
 	}
 
 	update(menu: Menu): Promise<Response> {
+      menu.fechaVigenciaDesde = new Date().toISOString()
+      menu.fechaVigenciaHasta = new Date().toISOString()
 	    console.log('updating menu ' + JSON.stringify(menu));
 			console.log(`${this.menusUrl}/edit`)
 	    return this.http.put(`${this.menusUrl}/edit`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()

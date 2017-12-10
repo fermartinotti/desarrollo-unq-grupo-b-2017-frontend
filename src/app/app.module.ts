@@ -10,21 +10,46 @@ import { SaldoComponent }   from './saldo/cargar-saldo.component';
 import { PedidoComponent }   from './pedido/pedido.component';
 import { PedidoService }   from './pedido/pedido-service';
 import { RetirarSaldoComponent }   from './saldo/retirar-saldo.component';
+import { CallbackComponent }   from './callback/callback.component';
+import { ClienteLoginComponent }  from './cliente/cliente-login.component';
 import { HttpModule } from '@angular/http';
 import { ClienteService }  from './cliente/cliente.service';
-import { ClienteLoginComponent }  from './cliente/cliente-login.component';
 import { MenuService }  from './menu/menu.service';
 import { ProveedorService }  from './proveedor/proveedor-service';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { AuthService } from './auth0/auth0.service';
+import { ApiService } from './api/api.service';
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule,AppRoutingModule, FormsModule],
-  declarations: [ AppComponent, MenuComponent, MainViewComponent, MenuListComponent, ClienteLoginComponent,
-     ProveedorLoginComponent, SaldoComponent,RetirarSaldoComponent, PedidoComponent],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    MainViewComponent,
+    MenuListComponent,
+    ClienteLoginComponent,
+    ProveedorLoginComponent,
+    SaldoComponent,
+    RetirarSaldoComponent,
+    PedidoComponent,
+    CallbackComponent
+  ],
   bootstrap: [ AppComponent ],
-  providers: [ ClienteService, MenuService, ProveedorService, PedidoService]
+  providers: [
+    ClienteService,
+    MenuService,
+    ProveedorService,
+    PedidoService,
+    AuthService,
+    ApiService
+  ]
 })
 
 

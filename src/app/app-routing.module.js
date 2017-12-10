@@ -15,6 +15,7 @@ var proveedor_login_component_1 = require("./proveedor/proveedor-login.component
 var cargar_saldo_component_1 = require("./saldo/cargar-saldo.component");
 var retirar_saldo_component_1 = require("./saldo/retirar-saldo.component");
 var pedido_component_1 = require("./pedido/pedido.component");
+var callback_component_1 = require("./callback/callback.component");
 var routes = [
     { path: '', component: main_view_component_1.MainViewComponent },
     { path: 'menu', component: menu_component_1.MenuComponent },
@@ -27,6 +28,8 @@ var routes = [
     { path: 'cargar-saldo', component: cargar_saldo_component_1.SaldoComponent },
     { path: 'retirar-saldo', component: retirar_saldo_component_1.RetirarSaldoComponent },
     { path: 'pedido', component: pedido_component_1.PedidoComponent },
+    { path: 'callback', component: callback_component_1.CallbackComponent },
+    { path: '**', redirectTo: '' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
