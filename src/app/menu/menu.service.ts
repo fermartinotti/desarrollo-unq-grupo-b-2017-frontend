@@ -2,6 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Menu } from './menu'
+import { Proveedor } from '../proveedor/proveedor'
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -15,6 +16,7 @@ export class MenuServiceQuery {
 @Injectable()
 export class MenuService {
 	private menusUrl = 'http://localhost:8080/rest/menus';  // URL del backend
+  private proveedorUrl = 'http://localhost:8080/rest/proveedores';
 
 	constructor(private http: HttpClient) {}
 
@@ -59,6 +61,15 @@ export class MenuService {
 				.then(response => response)
 				.catch(this.handleError);;
 	}
+
+  getProveedorByMenu(id:any): Promise<Proveedor>{
+    console.log('getting proveedor ' + JSON.stringify(id));
+    console.log(`${this.proveedorUrl}/searchProveedor/`+ id)
+    return this.http.get(`${this.proveedorUrl}/searchProveedor/`+ id)
+      .toPromise()
+      .then(response => response as Proveedor)
+      .catch(this.handleError);;
+  }
 
 	private getHeaders() {
 	    let headers = new Headers();

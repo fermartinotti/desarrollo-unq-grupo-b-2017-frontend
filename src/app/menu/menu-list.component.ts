@@ -29,6 +29,9 @@ export class MenuListComponent {
     this.menuService.getMenus(this.query).then((menuObtained) => {
       this.menulist = menuObtained
       console.log(menuObtained)
+      this.menulist.map((menu) => { //seteo el proveedor de cada menu
+          this.menuService.getProveedorByMenu(menu.id).then((prov) => menu.proveedor = prov)
+      })
 		})
   }
 

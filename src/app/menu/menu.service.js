@@ -22,6 +22,7 @@ var MenuService = (function () {
     function MenuService(http) {
         this.http = http;
         this.menusUrl = 'http://localhost:8080/rest/menus'; // URL del backend
+        this.proveedorUrl = 'http://localhost:8080/rest/proveedores';
     }
     MenuService.prototype.getMenus = function (query) {
         console.log(Object.keys(query));
@@ -57,6 +58,15 @@ var MenuService = (function () {
         console.log('updating menu ' + JSON.stringify(menu));
         console.log(this.menusUrl + "/edit");
         return this.http.put(this.menusUrl + "/edit", JSON.stringify(menu)).toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+        ;
+    };
+    MenuService.prototype.getProveedorByMenu = function (id) {
+        console.log('getting proveedor ' + JSON.stringify(id));
+        console.log(this.proveedorUrl + "/searchProveedor/" + id);
+        return this.http.get(this.proveedorUrl + "/searchProveedor/" + id)
+            .toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;

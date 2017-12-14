@@ -28,6 +28,9 @@ var MenuListComponent = (function () {
         this.menuService.getMenus(this.query).then(function (menuObtained) {
             _this.menulist = menuObtained;
             console.log(menuObtained);
+            _this.menulist.map(function (menu) {
+                _this.menuService.getProveedorByMenu(menu.id).then(function (prov) { return menu.proveedor = prov; });
+            });
         });
     };
     MenuListComponent.prototype.next = function () {

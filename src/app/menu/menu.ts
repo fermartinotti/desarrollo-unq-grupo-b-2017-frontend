@@ -1,4 +1,5 @@
-import{Serializable} from '../serializable'
+import{ Serializable } from '../serializable'
+import{ Proveedor } from '../proveedor/proveedor'
 
 export class Menu implements Serializable<Menu> {
 
@@ -18,6 +19,7 @@ export class Menu implements Serializable<Menu> {
 	precioCantidadMinima2 : number;
 	cantidadMaxVtasPorDia : number;
 	isSelected : Boolean;
+	proveedor : Proveedor;
 
 	deserialize(input:any) {
 		this.id = (input.id) ?  input.nombre : ''

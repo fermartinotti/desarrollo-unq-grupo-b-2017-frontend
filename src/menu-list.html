@@ -17,6 +17,7 @@
       <input type="checkbox">
       <!-- <span>{{menu.isSelected}}</span> -->
       <a routerLink="/menu/{{menu.id}}" routerLinkActive="active" i18n>Edit Menu</a>
+      <span *ngIf="menu.proveedor">{{ menu.proveedor.nombre }}</span>      
     </li>
   </ul>
   <button (click)="previous()">&lt;&lt;</button>

@@ -34,10 +34,24 @@
            <span>Precio<label>*</label></span>
            <input [(ngModel)]='menu.precio' name="precio" type="number" ngModel required >
            <span>Categoria<label>*</label></span>
-
            <select [(ngModel)]='menu.categoria' ngModel name="categoria" > Categorias
              <option *ngFor="let cate of categorias" value="{{ cate }}">{{ cate }}</option>
            </select>
+           <span>Costo Delivery<label>*</label></span>
+           <input [(ngModel)]='menu.valorDelivery' name="valorDelivery" type="number" ngModel required >
+
+           <span>Cantidad Minima<label>*</label></span>
+           <input [(ngModel)]='menu.cantidadMinima' name="cantidadMinima" type="number" ngModel required >
+
+           <span>Cantidad Minima 2<label>*</label></span>
+           <input [(ngModel)]='menu.cantidadMinima2' name="cantidadMinima2" type="number" ngModel required >
+
+           <span>Precio Cantidad Minima <label>*</label></span>
+           <input [(ngModel)]='menu.precioCantidadMinima' name="precioCantidadMinima" type="number" ngModel required >
+
+           <span>Precio Cantidad Minima2 <label>*</label></span>
+           <input [(ngModel)]='menu.precioCantidadMinima2' name="precioCantidadMinima2" type="number" ngModel required >
+
 
            <!-- {{categorias}} -->
            <button *ngIf='menu.id' (click)="updateMenu(f)" class="btn btn-info">Actualizar</button>
