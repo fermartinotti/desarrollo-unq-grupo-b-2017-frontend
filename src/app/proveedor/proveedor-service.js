@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var http_2 = require("@angular/common/http");
 require("rxjs/add/operator/toPromise");
 var ProveedorService = (function () {
     function ProveedorService(http) {
@@ -26,7 +27,7 @@ var ProveedorService = (function () {
     ProveedorService.prototype.save = function (proveedor) {
         console.log('Saving proveedor ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/create");
-        return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
+        return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;
@@ -34,7 +35,7 @@ var ProveedorService = (function () {
     ProveedorService.prototype.update = function (proveedor) {
         console.log('edit proveedor ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/edit");
-        return this.http.put(this.proveedorUrl + "/edit", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
+        return this.http.put(this.proveedorUrl + "/edit", JSON.stringify(proveedor)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;
@@ -43,7 +44,7 @@ var ProveedorService = (function () {
     ProveedorService.prototype.retirarSaldo = function (proveedor) {
         console.log('Saving proveedor ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/create");
-        return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor), { headers: this.getHeaders() }).toPromise()
+        return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;
@@ -62,7 +63,7 @@ var ProveedorService = (function () {
 }());
 ProveedorService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_2.HttpClient])
 ], ProveedorService);
 exports.ProveedorService = ProveedorService;
 //# sourceMappingURL=proveedor-service.js.map

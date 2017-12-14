@@ -2,13 +2,14 @@ import { Injectable }    from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Proveedor } from './proveedor';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ProveedorService{
 	private proveedorUrl = 'http://localhost:8080/rest/proveedores';  // URL del backend
 
-	constructor(private http: Http) {}
+	constructor(private http: HttpClient) {}
 
 // getClientes(): Promise<Cliente[]> { //metodo para traer todos los clientes
 //   return this.http.get(`${this.clienteUrl}/getAll`)
@@ -20,7 +21,7 @@ export class ProveedorService{
 save(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 	console.log('Saving proveedor ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/create`)
-	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
+	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor)).toPromise()
 		.then(response => response)
 		.catch(this.handleError);;
   }
@@ -28,7 +29,7 @@ save(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 update(proveedor: Proveedor): Promise<Response> { //metodo para actualizar un proveedor
 	console.log('edit proveedor ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/edit`)
-	return this.http.put(`${this.proveedorUrl}/edit`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
+	return this.http.put(`${this.proveedorUrl}/edit`, JSON.stringify(proveedor)).toPromise()
 		.then(response => response)
 		.catch(this.handleError);;
   }
@@ -38,7 +39,7 @@ update(proveedor: Proveedor): Promise<Response> { //metodo para actualizar un pr
 retirarSaldo(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 	console.log('Saving proveedor ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/create`)
-	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor), {headers: this.getHeaders()}).toPromise()
+	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor)).toPromise()
 		.then(response => response)
 		.catch(this.handleError);;
   }

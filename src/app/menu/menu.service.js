@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var http_2 = require("@angular/common/http");
 require("rxjs/add/operator/toPromise");
 var MenuServiceQuery = (function () {
     function MenuServiceQuery() {
@@ -28,25 +29,25 @@ var MenuService = (function () {
         console.log(this.menusUrl + "/search/" + acumulado);
         return this.http.get(this.menusUrl + "/search/" + acumulado)
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     MenuService.prototype.getMenusByName = function (nombre) {
         return this.http.get(this.menusUrl + "/getByNombre/" + nombre + '/1')
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     MenuService.prototype.getMenu = function (id) {
         return this.http.get(this.menusUrl + "/" + id)
             .toPromise()
-            .then(function (response) { return response.json(); })
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     MenuService.prototype.save = function (menu) {
         console.log('Saving menu ' + JSON.stringify(menu));
         console.log(this.menusUrl + "/create");
-        return this.http.post(this.menusUrl + "/create", JSON.stringify(menu), { headers: this.getHeaders() }).toPromise()
+        return this.http.post(this.menusUrl + "/create", JSON.stringify(menu)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
     };
@@ -55,7 +56,7 @@ var MenuService = (function () {
         menu.fechaVigenciaHasta = new Date().toISOString();
         console.log('updating menu ' + JSON.stringify(menu));
         console.log(this.menusUrl + "/edit");
-        return this.http.put(this.menusUrl + "/edit", JSON.stringify(menu), { headers: this.getHeaders() }).toPromise()
+        return this.http.put(this.menusUrl + "/edit", JSON.stringify(menu)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;
@@ -74,7 +75,7 @@ var MenuService = (function () {
 }());
 MenuService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_2.HttpClient])
 ], MenuService);
 exports.MenuService = MenuService;
 //# sourceMappingURL=menu.service.js.map

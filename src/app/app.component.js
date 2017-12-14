@@ -30,7 +30,8 @@ AppComponent = __decorate([
         selector: 'my-app',
         templateUrl: 'app.component.html',
     }),
-    __metadata("design:paramtypes", [cliente_service_1.ClienteService, auth0_service_1.AuthService])
+    __metadata("design:paramtypes", [cliente_service_1.ClienteService,
+        auth0_service_1.AuthService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

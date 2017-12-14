@@ -2,6 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Menu } from './menu'
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
 export class MenuServiceQuery {
@@ -15,7 +16,7 @@ export class MenuServiceQuery {
 export class MenuService {
 	private menusUrl = 'http://localhost:8080/rest/menus';  // URL del backend
 
-	constructor(private http: Http) {}
+	constructor(private http: HttpClient) {}
 
   getMenus(query: MenuServiceQuery): Promise<Menu[]> { //metodo para traer todos los Menus del filtro
     console.log(Object.keys(query))
@@ -23,28 +24,28 @@ export class MenuService {
     console.log(`${this.menusUrl}/search/` + acumulado)
 	  return this.http.get(`${this.menusUrl}/search/` + acumulado)
 	             .toPromise()
-	             .then(response => response.json() as Menu[])
+	             .then(response => response as Menu[])
 	             .catch(this.handleError);
 	}
 
 	getMenusByName(nombre:String): Promise<Menu[]> { //metodo para traer todos los Menus
 	  return this.http.get(`${this.menusUrl}/getByNombre/`+nombre+'/1')
 	             .toPromise()
-	             .then(response => response.json() as Menu[])
+	             .then(response => response as Menu[])
 	             .catch(this.handleError);
 	}
 
 	getMenu(id:any): Promise<Menu> { //metodo para traer un Menu
 	  return this.http.get(`${this.menusUrl}/`+id )
 	             .toPromise()
-	             .then(response => response.json() as Menu)
+	             .then(response => response as Menu)
 	             .catch(this.handleError);
 	}
 
 	save(menu: Menu): Promise<Response> {
 	    console.log('Saving menu ' + JSON.stringify(menu));
 			console.log(`${this.menusUrl}/create`)
-	    return this.http.post(`${this.menusUrl}/create`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()
+	    return this.http.post(`${this.menusUrl}/create`, JSON.stringify(menu)).toPromise()
 				.then(response => response)
 				.catch(this.handleError);
 	}
@@ -54,7 +55,7 @@ export class MenuService {
       menu.fechaVigenciaHasta = new Date().toISOString()
 	    console.log('updating menu ' + JSON.stringify(menu));
 			console.log(`${this.menusUrl}/edit`)
-	    return this.http.put(`${this.menusUrl}/edit`, JSON.stringify(menu), {headers: this.getHeaders()}).toPromise()
+	    return this.http.put(`${this.menusUrl}/edit`, JSON.stringify(menu)).toPromise()
 				.then(response => response)
 				.catch(this.handleError);;
 	}

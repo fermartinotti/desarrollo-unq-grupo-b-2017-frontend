@@ -18,7 +18,6 @@ var pedido_service_1 = require("./pedido/pedido-service");
 var retirar_saldo_component_1 = require("./saldo/retirar-saldo.component");
 var callback_component_1 = require("./callback/callback.component");
 var cliente_login_component_1 = require("./cliente/cliente-login.component");
-var http_1 = require("@angular/http");
 var cliente_service_1 = require("./cliente/cliente.service");
 var menu_service_1 = require("./menu/menu.service");
 var proveedor_service_1 = require("./proveedor/proveedor-service");
@@ -26,6 +25,9 @@ var app_routing_module_1 = require("./app-routing.module");
 var forms_1 = require("@angular/forms"); // <-- NgModel lives here
 var auth0_service_1 = require("./auth0/auth0.service");
 var api_service_1 = require("./api/api.service");
+var http_1 = require("@angular/common/http");
+var header_config_1 = require("./header-config");
+var http_2 = require("@angular/common/http");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,9 +37,9 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
-            forms_1.FormsModule
+            forms_1.FormsModule,
+            http_2.HttpClientModule
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -53,6 +55,9 @@ AppModule = __decorate([
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [
+            { provide: http_1.HTTP_INTERCEPTORS,
+                useClass: header_config_1.SetHeaderInterceptor,
+                multi: true },
             cliente_service_1.ClienteService,
             menu_service_1.MenuService,
             proveedor_service_1.ProveedorService,

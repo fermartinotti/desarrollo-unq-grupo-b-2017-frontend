@@ -10,51 +10,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var api_service_1 = require("../api/api.service");
+var http_2 = require("@angular/common/http");
 require("rxjs/add/operator/toPromise");
 var ClienteService = (function () {
-    function ClienteService(http, apiService) {
+    function ClienteService(http) {
         this.http = http;
-        this.apiService = apiService;
-        this.clienteUrl = 'clientes';
+        this.clienteUrl = 'http://localhost:8080/rest/clientes'; // URL del backend
     }
     ClienteService.prototype.getCliente = function (id) {
-        return this.apiService.get(this.clienteUrl + "/getById" + id)
-            .then(function (response) { return response.json(); })
+        return this.http.get(this.clienteUrl + "/getById" + id)
+            .toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     ClienteService.prototype.getClientes = function () {
-        return this.apiService.get(this.clienteUrl + "/getAll")
-            .then(function (response) { return response.json(); })
+        return this.http.get(this.clienteUrl + "/getAll")
+            .toPromise()
+            .then(function (response) { return response; })
             .catch(this.handleError);
     };
     ClienteService.prototype.save = function (cliente) {
         console.log('Saving cliente ' + JSON.stringify(cliente));
         console.log(this.clienteUrl + "/create");
-        return this.apiService.post(this.clienteUrl + "/create")
+        return this.http.post(this.clienteUrl + "/create", JSON.stringify(cliente)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
     };
     ClienteService.prototype.update = function (cliente) {
         console.log('edit cliente ' + JSON.stringify(cliente));
         console.log(this.clienteUrl + "/edit");
-        return this.apiService.put(this.clienteUrl + "/edit")
+        return this.http.put(this.clienteUrl + "/edit", JSON.stringify(cliente)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;
     };
     ClienteService.prototype.getSaldo = function (id) {
         console.log(this.clienteUrl + "/getCreditos");
-        return this.apiService.get(this.clienteUrl + "/getCreditos/" + id)
-            .then(function (response) { return response; })
-            .catch(this.handleError);
-    };
-    ClienteService.prototype.saveSaldo = function (cliente) {
-        console.log(this.clienteUrl + "/cargarCreditos");
-        return this.apiService.put(this.clienteUrl + "/cargarCreditos")
+        return this.http.get(this.clienteUrl + "/getCreditos/" + id)
+            .toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
         ;
+    };
+    ClienteService.prototype.saveSaldo = function (cliente) {
+        console.log(this.clienteUrl + "/cargarCreditos");
+        return this.http.put(this.clienteUrl + "/cargarCreditos", JSON.stringify(cliente)).toPromise()
+            .then(function (response) { return response; });
     };
     ClienteService.prototype.getHeaders = function () {
         var headers = new http_1.Headers();
@@ -71,7 +72,7 @@ var ClienteService = (function () {
 }());
 ClienteService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, api_service_1.ApiService])
+    __metadata("design:paramtypes", [http_2.HttpClient])
 ], ClienteService);
 exports.ClienteService = ClienteService;
 //# sourceMappingURL=cliente.service.js.map

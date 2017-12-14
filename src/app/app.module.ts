@@ -20,14 +20,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { AuthService } from './auth0/auth0.service';
 import { ApiService } from './api/api.service';
-
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {SetHeaderInterceptor} from './header-config';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -43,6 +45,9 @@ import { ApiService } from './api/api.service';
   ],
   bootstrap: [ AppComponent ],
   providers: [
+    {provide: HTTP_INTERCEPTORS,
+    useClass: SetHeaderInterceptor,
+    multi: true},
     ClienteService,
     MenuService,
     ProveedorService,
