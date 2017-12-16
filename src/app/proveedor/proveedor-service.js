@@ -42,7 +42,7 @@ var ProveedorService = (function () {
     };
     //cambiar cuando sepa como traerme el proveedor registrado
     ProveedorService.prototype.retirarSaldo = function (proveedor) {
-        console.log('Saving proveedor ' + JSON.stringify(proveedor));
+        console.log('retirando saldo ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/create");
         return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor)).toPromise()
             .then(function (response) { return response; })

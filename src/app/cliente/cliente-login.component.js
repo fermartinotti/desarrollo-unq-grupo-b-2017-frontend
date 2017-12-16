@@ -26,7 +26,6 @@ var ClienteLoginComponent = (function () {
         this.clienteService.save(this.cliente).then(function (data) {
             console.log(_this.router);
             console.log(data);
-            console.log(data.json());
             console.log(data.json().id);
             //window.localStorage.setItem('clienteId', String(data.json().id))
             localStorage.setItem('clienteId', String(data.json().id));

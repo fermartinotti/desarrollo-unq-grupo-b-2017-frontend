@@ -21,7 +21,6 @@ create(f:NgForm){
   this.clienteService.save(this.cliente).then((data) => {
     console.log(this.router)
     console.log(data)
-    console.log(data.json())
     console.log(data.json().id)
     //window.localStorage.setItem('clienteId', String(data.json().id))
     localStorage.setItem('clienteId', String(data.json().id))

@@ -26,9 +26,7 @@ var ProveedorLoginComponent = (function () {
         this.proveedorService.save(this.proveedor).then(function (data) {
             console.log(_this.router);
             console.log(data);
-            // console.log(data.json())
             console.log(data.json().id);
-            //window.localStorage.setItem('clienteId', String(data.json().id))
             localStorage.setItem('proveedorId', String(data.json().id));
             //console.log(localStorage.getItem('proveedorId', String(data.json().id)))
             _this.router.navigateByUrl('/proveedor-login/' + data.json().id);

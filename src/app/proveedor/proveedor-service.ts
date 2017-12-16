@@ -37,7 +37,7 @@ update(proveedor: Proveedor): Promise<Response> { //metodo para actualizar un pr
 
 //cambiar cuando sepa como traerme el proveedor registrado
 retirarSaldo(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
-	console.log('Saving proveedor ' + JSON.stringify(proveedor));
+	console.log('retirando saldo ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/create`)
 	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor)).toPromise()
 		.then(response => response)
