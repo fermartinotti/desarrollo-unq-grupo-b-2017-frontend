@@ -2,12 +2,21 @@
 
   <h3 i18n>Menu List</h3>
   <form class="form-inline mt-2 mt-md-0" #f="ngForm" (ngSubmit)="getMenus(f)">
+    <div class="form-group">
     <span i18n>Name<label></label></span>
     <input i18n-placeholder placeholder="noFilter" class="form-control mr-sm-2" type="text" [ngModel]="nombre" (ngModelChange)="changeParam($event, 'nombre')" name="nombre"/>
+    </div>
+
+    <div class="form-group">
     <span i18n>Category<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="categoria" (ngModelChange)="changeParam($event, 'categoria')"name="categoria"/>
+    </div>
+
+    <div class="form-group">
     <span i18n>Locate<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="localidad" (ngModelChange)="changeParam($event, 'localidad')"name="localidad"/>
+    </div>
+
     <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary" i18n>Search</button>
   </form>
   <ul>
@@ -17,7 +26,7 @@
       <input type="checkbox">
       <!-- <span>{{menu.isSelected}}</span> -->
       <a routerLink="/menu/{{menu.id}}" routerLinkActive="active" i18n>Edit Menu</a>
-      <span *ngIf="menu.proveedor">{{ menu.proveedor.nombre }}</span>      
+      <span *ngIf="menu.proveedor">{{ menu.proveedor.nombre }}</span>
     </li>
   </ul>
   <button (click)="previous()">&lt;&lt;</button>

@@ -1,5 +1,6 @@
 <div class="">
   <form #f="ngForm">
+    <div class="form-group">
     <span>Nombre*</span>
     <input [(ngModel)]='cliente.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required >
     <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
@@ -8,8 +9,11 @@
        El nombre es requerido.
      </div>
     </div>
+    </div>
+
     <!-- <input type="text" name="cliente.nombre" value=""> -->
     <!-- <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" > -->
+    <div class="form-group">
     <span>Apellido*</span>
     <input [(ngModel)]='cliente.apellido' id="apellido" name="apellido" #apellido="ngModel" type="text" ngModel required >
     <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
@@ -18,7 +22,10 @@
        El apellido es requerido.
      </div>
     </div>
+    </div>
+
     <!-- <input type="text" name="cliente.apellido" value=""> -->
+    <div class="form-group">
     <span>Email*</span>
     <input [(ngModel)]='cliente.email' id="email" name="email" #email="ngModel" type="text" ngModel required >
     <div *ngIf="email.invalid && (email.dirty || email.touched)"
@@ -27,6 +34,8 @@
        El email es requerido.
      </div>
     </div>
+    </div>
+
     <!-- <input type="text" name="cliente.email" value=""> -->
     <button (click)="update(f)" class="btn btn-info">Actualizar</button>
     <button *ngIf='!cliente.id' [disabled]="!f.form.valid" (click)="create(f)" class="btn btn-success">Crear</button>

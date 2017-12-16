@@ -8,18 +8,22 @@
       <div>
         <form #f="ngForm">
           <!-- *ngIf="menu" -->
-          <span>Nombre<label>*</label></span>
-           <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" >
+          <div class="form-group">
+            <span>Nombre<label>*</label></span>
+             <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" >
 
-           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
-               class="alert alert-danger">
-            <div *ngIf="nombre.errors.required">
-              El nombre es requerido.
-            </div>
-            <div *ngIf="nombre.errors.minlength">
-              El nombre debe ser de mas de 4 caracteres.
+             <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="nombre.errors.required">
+                El nombre es requerido.
+              </div>
+              <div *ngIf="nombre.errors.minlength">
+                El nombre debe ser de mas de 4 caracteres.
+              </div>
             </div>
           </div>
+
+          <div class="form-group">
            <span>Descripcion<label>*</label></span>
            <input [(ngModel)]='menu.descripcion' des="descripcion" name="descripcion" #descripcion="ngModel" type="text" ngModel required minlength="20" >
            <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
@@ -31,6 +35,8 @@
               La Descripcion debe ser de mas de 20 caracteres.
             </div>
           </div>
+          </div>
+
            <span>Precio<label>*</label></span>
            <input [(ngModel)]='menu.precio' name="precio" type="number" ngModel required >
            <span>Categoria<label>*</label></span>

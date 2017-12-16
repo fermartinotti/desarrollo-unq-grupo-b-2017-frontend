@@ -2,12 +2,21 @@
 
   <h3 i18n="menuList">Lista Menus</h3>
   <form class="form-inline mt-2 mt-md-0" #f="ngForm" (ngSubmit)="getMenus(f)">
+    <div class="form-group">
     <span>Nombre<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="nombre" (ngModelChange)="changeParam($event, 'nombre')" name="nombre"/>
+    </div>
+
+    <div class="form-group">
     <span>Categoria<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="categoria" (ngModelChange)="changeParam($event, 'categoria')"name="categoria"/>
+    </div>
+
+    <div class="form-group">
     <span>Localidad<label></label></span>
     <input class="form-control mr-sm-2" type="text" [ngModel]="localidad" (ngModelChange)="changeParam($event, 'localidad')"name="localidad"/>
+      </div>
+
     <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary">Buscar</button>
   </form>
   <ul>

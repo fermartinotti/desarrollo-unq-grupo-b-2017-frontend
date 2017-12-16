@@ -1,6 +1,8 @@
+<!--
 <div id="loading">
   <img src="assets/loading.svg" alt="Loading spinner">
 </div>
+-->
 
 <div class="content">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -14,43 +16,6 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Configuracion</a>
-        </li>
-      </ul>
-      <form class="form-inline mt-2 mt-md-0">
-
-        <input class="form-control mr-sm-2" type="text" placeholder="Buscar menu" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-
-        <button id="btn-home-view" class="btn btn-primary btn-margin">
-          Home
-        </button>
-        
-        <button
-        class="btn btn-primary btn-margin"
-        *ngIf="!auth.isAuthenticated()"
-        (click)="auth.login()">
-        Log In
-        </button>
-
-        <button
-        class="btn btn-primary btn-margin"
-        *ngIf="auth.isAuthenticated()"
-        (click)="auth.logout()">
-        Log Out
-        </button>
-      </form>
-    </div>
-  </nav>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Login <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/proveedor-login" routerLinkActive="active">Crear Proveedor</a>
@@ -71,19 +36,52 @@
           <a class="nav-link" routerLink="/pedido" routerLinkActive="active">Realizar Pedido</a>
         </li>
       </ul>
-    </nav>
+      <form class="form-inline mt-2 mt-md-0">
 
-    <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-      <h1 i18n>WELCOME</h1>
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar menu" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
 
-      <section class="row text-center placeholders">
-        <!-- <div class="alert alert-warning" role="alert">
-          <strong>ATENCION!</strong> Tiene compras sin calificar
-        </div> -->
-      </section>
-      <div>
-        <router-outlet></router-outlet>
-      </div>
-    </main>
+        <button id="btn-home-view" class="btn btn-primary btn-margin">
+          Home
+        </button>
+
+        <button
+        class="btn btn-primary btn-margin"
+        *ngIf="!auth.isAuthenticated()"
+        (click)="auth.login()">
+        Log In
+        </button>
+
+        <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated()"
+        (click)="auth.logout()">
+        Log Out
+        </button>
+      </form>
+    </div>
+  </nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-6">
+
+      <main role="main">
+        <h1 i18n>WELCOME</h1>
+
+        <section class="row text-center placeholders">
+          <!-- <div class="alert alert-warning" role="alert">
+            <strong>ATENCION!</strong> Tiene compras sin calificar
+          </div> -->
+        </section>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+
+    </div>
+    <div class="col"></div>
   </div>
+
 </div>

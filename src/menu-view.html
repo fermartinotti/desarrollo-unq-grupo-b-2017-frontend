@@ -7,50 +7,73 @@
       <div>
         <form #f="ngForm">
           <!-- *ngIf="menu" -->
-          <span>Nombre<label>*</label></span>
-           <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" >
+          <div class="form-group">
+            <span>Nombre<label>*</label></span>
+            <input [(ngModel)]='menu.nombre' id="nombre" name="nombre" #nombre="ngModel" type="text" ngModel required minlength="4" >
 
-           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
-               class="alert alert-danger">
-            <div *ngIf="nombre.errors.required">
-              El nombre es requerido.
-            </div>
-            <div *ngIf="nombre.errors.minlength">
-              El nombre debe ser de mas de 4 caracteres.
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="nombre.errors.required">
+                El nombre es requerido.
+              </div>
+              <div *ngIf="nombre.errors.minlength">
+                El nombre debe ser de mas de 4 caracteres.
+              </div>
             </div>
           </div>
+
+          <div class="form-group">
            <span>Descripcion<label>*</label></span>
            <input [(ngModel)]='menu.descripcion' des="descripcion" name="descripcion" #descripcion="ngModel" type="text" ngModel required minlength="20" >
            <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
-               class="alert alert-danger">
-            <div *ngIf="descripcion.errors.required">
-              La Descripcion es requerida.
-            </div>
-            <div *ngIf="descripcion.errors.minlength">
-              La Descripcion debe ser de mas de 20 caracteres.
+                 class="alert alert-danger">
+              <div *ngIf="descripcion.errors.required">
+                La Descripcion es requerida.
+              </div>
+              <div *ngIf="descripcion.errors.minlength">
+                La Descripcion debe ser de mas de 20 caracteres.
+              </div>
             </div>
           </div>
+
+          <div class="form-group">
            <span>Precio<label>*</label></span>
            <input [(ngModel)]='menu.precio' name="precio" type="number" ngModel required >
+          </div>
+
+          <div class="form-group">
            <span>Categoria<label>*</label></span>
            <select [(ngModel)]='menu.categoria' ngModel name="categoria" > Categorias
              <option *ngFor="let cate of categorias" value="{{ cate }}">{{ cate }}</option>
            </select>
+          </div>
+
+          <div class="form-group">
            <span>Costo Delivery<label>*</label></span>
            <input [(ngModel)]='menu.valorDelivery' name="valorDelivery" type="number" ngModel required >
+          </div>
 
+          <div class="form-group">
            <span>Cantidad Minima<label>*</label></span>
            <input [(ngModel)]='menu.cantidadMinima' name="cantidadMinima" type="number" ngModel required >
+          </div>
 
+          <div class="form-group">
            <span>Cantidad Minima 2<label>*</label></span>
            <input [(ngModel)]='menu.cantidadMinima2' name="cantidadMinima2" type="number" ngModel required >
+          </div>
 
+          <div class="form-group">
            <span>Precio Cantidad Minima <label>*</label></span>
            <input [(ngModel)]='menu.precioCantidadMinima' name="precioCantidadMinima" type="number" ngModel required >
 
+          </div>
+
+          <div class="form-group">
            <span>Precio Cantidad Minima2 <label>*</label></span>
            <input [(ngModel)]='menu.precioCantidadMinima2' name="precioCantidadMinima2" type="number" ngModel required >
 
+          </div>
 
            <!-- {{categorias}} -->
            <button *ngIf='menu.id' (click)="updateMenu(f)" class="btn btn-info">Actualizar</button>
