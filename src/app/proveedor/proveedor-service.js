@@ -17,13 +17,30 @@ var ProveedorService = (function () {
         this.http = http;
         this.proveedorUrl = 'http://localhost:8080/rest/proveedores'; // URL del backend
     }
-    // getClientes(): Promise<Cliente[]> { //metodo para traer todos los clientes
-    //   return this.http.get(`${this.clienteUrl}/getAll`)
-    //              .toPromise()
-    //              .then(response => response.json() as Cliente[])
-    //              .catch(this.handleError);
-    // }
-    //
+    ProveedorService.prototype.getSaldo = function (id) {
+        console.log(this.proveedorUrl + "/getCreditos/" + id);
+        return this.http.get(this.proveedorUrl + "/getCreditos/" + id)
+            .toPromise()
+            .then(function (response) {
+            console.log(response);
+            return response;
+        })
+            .catch(this.handleError);
+        ;
+    };
+    ProveedorService.prototype.getProveedorByEmail = function (email) {
+        console.log(this.proveedorUrl + "/getByEmail/" + email);
+        return this.http.get(this.proveedorUrl + "/getByEmail/" + email)
+            .toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+    };
+    ProveedorService.prototype.getProveedorByMenu = function (id) {
+        return this.http.get(this.proveedorUrl + "/searchProveedor/" + id)
+            .toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+    };
     ProveedorService.prototype.save = function (proveedor) {
         console.log('Saving proveedor ' + JSON.stringify(proveedor));
         console.log(this.proveedorUrl + "/create");
@@ -40,14 +57,12 @@ var ProveedorService = (function () {
             .catch(this.handleError);
         ;
     };
-    //cambiar cuando sepa como traerme el proveedor registrado
     ProveedorService.prototype.retirarSaldo = function (proveedor) {
         console.log('retirando saldo ' + JSON.stringify(proveedor));
-        console.log(this.proveedorUrl + "/create");
-        return this.http.post(this.proveedorUrl + "/create", JSON.stringify(proveedor)).toPromise()
+        console.log(this.proveedorUrl + "/retirarCreditos");
+        return this.http.post(this.proveedorUrl + "/retirarCreditos", JSON.stringify(proveedor)).toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
-        ;
     };
     ProveedorService.prototype.getHeaders = function () {
         var headers = new http_1.Headers();

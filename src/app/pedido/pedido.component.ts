@@ -4,39 +4,66 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Menu } from '../menu/menu';
 import { PedidoService }  from '../pedido/pedido-service';
+import { MenuService } from '../menu/menu.service';
+import { MenuServiceQuery } from '../menu/menu.service';
 import { Router } from '@angular/router';
+import { Pedido }  from '../pedido/pedido';
 
 @Component({
   selector: 'pedido',
   templateUrl: 'pedido.html'
 })
-export class PedidoComponent{
+export class PedidoComponent {
+  pedido : Pedido = new Pedido();
+  menulist: Menu[];
+  query: MenuServiceQuery;
 
-  menu : Menu = new Menu({});
+  constructor(private pedidoService: PedidoService, private route: ActivatedRoute, private menuService: MenuService) {
+    this.query = {
+      nombre:    '',
+      categoria: '',
+      localidad: '',
+      pageNumber: 1,
+    }
+  }
 
-  //constructor(private pedidoService: PedidoService, private route: ActivatedRoute, private router: Router) {}
+  ngOnInit() {
+		this.getMenus()
+	}
 
-  //constructor(private menuService: MenuService, private route: ActivatedRoute) {}
-  //
-  // ngOnInit() {
-  //    this.route.params.subscribe(params => {
-  //      console.log(params['id'])
-  //      if (params['id']){
-  //        this.menuService.getMenu(params['id']).then((menuObtained) => {
-  //          this.menu = menuObtained
-  //          console.log(menuObtained)
-  //        })
-  //      }
-  //   })
-  // }
-  //
-  // onSubmit(f: NgForm) {
-  //   console.log(f)
-  //   this.menuService.save(this.menu).then((data) =>  {
-	// 		console.log(data)
-  //     console.log('data')
-	// 	})
-  // }
+  getMenus() {
+    this.menuService.getMenus(this.query).then((menuObtained) => {
+      this.menulist = menuObtained
+      console.log(menuObtained)
+      this.menulist.map((menu) => { //seteo el proveedor de cada menu
+          this.menuService.getProveedorByMenu(menu.id).then((prov) => menu.proveedor = prov)
+      })
+		})
+  }
+
+  next(){
+    //this.query.page += 1;
+    this.query.pageNumber = this.query.pageNumber + 1;
+    this.getMenus();
+  }
+
+  previous(){
+    this.query.pageNumber -= 1;
+    this.getMenus();
+  }
+
+  changeParam(next: string, attrName: string) {
+    this.query[attrName] = next;
+    console.log(this.query);
+  }
+
+  comprar(pedidoForm: NgForm) {
+    console.log(pedidoForm.value)
+    console.log(this.pedido.cantidad)
+    this.pedidoService.buy(this.pedido).then((data) =>  {
+			console.log(data)
+		})
+  }
 
 
 }

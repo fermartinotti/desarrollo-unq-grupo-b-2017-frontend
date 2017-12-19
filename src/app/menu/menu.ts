@@ -21,6 +21,7 @@ export class Menu implements Serializable<Menu> {
 	isSelected : Boolean;
 	proveedor : Proveedor;
 
+
 	deserialize(input:any) {
 		this.id = (input.id) ?  input.nombre : ''
 		this.nombre = (input.nombre) ?  input.nombre : ''
@@ -39,6 +40,23 @@ export class Menu implements Serializable<Menu> {
 		this.cantidadMaxVtasPorDia = (input.cantidadMaxVtasPorDia) ?  input.cantidadMaxVtasPorDia : 0
 
 		return this
+	}
+
+	public static serialize(menu : Menu){
+		menu.fechaVigenciaDesde = this.convertFromJavaDateToJsDate(menu.fechaVigenciaDesde).toISOString();
+		menu.fechaVigenciaHasta = this.convertFromJavaDateToJsDate(menu.fechaVigenciaHasta).toISOString();
+
+		return menu
+	}
+
+	private static convertFromJavaDateToJsDate(javadate:any) {
+		var day = javadate.dayOfMonth;
+		var month = javadate.monthValue - 1; // Month is 0-indexed
+		var year = javadate.year;
+
+		var date = new Date(Date.UTC(year, month, day));
+		console.log(date)
+		return date
 	}
 
 	constructor(input:Object){

@@ -21,12 +21,12 @@
   </form>
   <ul>
     <li *ngFor="let menu of menulist">
-      <span>{{ menu.nombre }}</span>
-      <span>{{ menu.precio }}</span>
-      <input type="checkbox">
-      <!-- <span>{{menu.isSelected}}</span> -->
+      <span>Nombre:{{ menu.nombre }}</span>
+      <span>Precio: {{ menu.precio }}</span>
+      <span>Costo Delivery: {{menu.valorDelivery}}</span>
+      <span>Cantidad Minima: {{menu.cantidadMinima}}</span>
+      <span *ngIf="menu.proveedor">Proveedor: {{ menu.proveedor.nombre }}</span>
       <a routerLink="/menu/{{menu.id}}" routerLinkActive="active" i18n>Edit Menu</a>
-      <span *ngIf="menu.proveedor">{{ menu.proveedor.nombre }}</span>
     </li>
   </ul>
   <button (click)="previous()">&lt;&lt;</button>

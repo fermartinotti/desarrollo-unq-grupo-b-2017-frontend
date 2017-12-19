@@ -18,14 +18,15 @@ var MenuComponent = (function () {
         this.menuService = menuService;
         this.route = route;
         this.router = router;
-        this.categorias = ['Pizza', 'Pastas', 'Ensaladas', 'Parrilla'];
+        this.categorias = ['Pizza', 'Empanadas', 'Sushi', 'Pastas', 'Ensaladas', 'Parrilla'];
         this.menu = new menu_1.Menu({});
     }
     MenuComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            //console.log(params['id'])
+            console.log(params['id']);
             if (params['id']) {
+                console.log('dasds');
                 _this.menuService.getMenu(params['id']).then(function (menuObtained) {
                     _this.menu = menuObtained;
                     console.log(menuObtained);

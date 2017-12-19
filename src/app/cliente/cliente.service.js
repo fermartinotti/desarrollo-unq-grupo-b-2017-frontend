@@ -18,13 +18,19 @@ var ClienteService = (function () {
         this.clienteUrl = 'http://localhost:8080/rest/clientes'; // URL del backend
     }
     ClienteService.prototype.getCliente = function (id) {
-        return this.http.get(this.clienteUrl + "/getById" + id)
+        return this.http.get(this.clienteUrl + "/getById/" + id)
             .toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
     };
     ClienteService.prototype.getClientes = function () {
         return this.http.get(this.clienteUrl + "/getAll")
+            .toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+    };
+    ClienteService.prototype.getClienteByEmail = function (email) {
+        return this.http.get(this.clienteUrl + "/getByEmail/" + email)
             .toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);
@@ -48,14 +54,23 @@ var ClienteService = (function () {
         console.log(this.clienteUrl + "/getCreditos");
         return this.http.get(this.clienteUrl + "/getCreditos/" + id)
             .toPromise()
-            .then(function (response) { return response; })
+            .then(function (response) {
+            console.log(response);
+            return response;
+        })
             .catch(this.handleError);
         ;
     };
-    ClienteService.prototype.saveSaldo = function (cliente) {
+    ClienteService.prototype.saveSaldo = function (credito) {
         console.log(this.clienteUrl + "/cargarCreditos");
-        return this.http.put(this.clienteUrl + "/cargarCreditos", JSON.stringify(cliente)).toPromise()
-            .then(function (response) { return response; });
+        return this.http.put(this.clienteUrl + "/cargarCreditos/" + credito, {})
+            .toPromise()
+            .then(function (response) {
+            console.log(response);
+            return response;
+        })
+            .catch(this.handleError);
+        ;
     };
     ClienteService.prototype.getHeaders = function () {
         var headers = new http_1.Headers();

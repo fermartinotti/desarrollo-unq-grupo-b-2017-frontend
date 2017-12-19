@@ -11,13 +11,32 @@ export class ProveedorService{
 
 	constructor(private http: HttpClient) {}
 
-// getClientes(): Promise<Cliente[]> { //metodo para traer todos los clientes
-//   return this.http.get(`${this.clienteUrl}/getAll`)
-//              .toPromise()
-//              .then(response => response.json() as Cliente[])
-//              .catch(this.handleError);
-// }
-//
+	getSaldo(id:any): Promise<Response> { //metodo para traer saldo de un proveedor
+		console.log(`${this.proveedorUrl}/getCreditos/`+id)
+		return this.http.get(`${this.proveedorUrl}/getCreditos/`+id)
+			.toPromise()
+			.then(response =>{
+				console.log(response)
+				return response
+			})
+			.catch(this.handleError);;
+	}
+
+	getProveedorByEmail(email:String): Promise<Proveedor> {
+		console.log(`${this.proveedorUrl}/getByEmail/`+ email);
+		return this.http.get(`${this.proveedorUrl}/getByEmail/`+ email)
+							 .toPromise()
+							 .then(response => response as Proveedor)
+							 .catch(this.handleError);
+	}
+
+	getProveedorByMenu(id:any): Promise<Proveedor> {
+		return this.http.get(`${this.proveedorUrl}/searchProveedor/`+ id)
+							 .toPromise()
+							 .then(response => response as Proveedor)
+							 .catch(this.handleError);
+	}
+
 save(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
 	console.log('Saving proveedor ' + JSON.stringify(proveedor));
 	console.log(`${this.proveedorUrl}/create`)
@@ -34,14 +53,12 @@ update(proveedor: Proveedor): Promise<Response> { //metodo para actualizar un pr
 		.catch(this.handleError);;
   }
 
-
-//cambiar cuando sepa como traerme el proveedor registrado
-retirarSaldo(proveedor: Proveedor): Promise<Response> { //metodo para guardar un cliente
+retirarSaldo(proveedor: Proveedor): Promise<Response> { //metodo para retirar saldo de un proveedor
 	console.log('retirando saldo ' + JSON.stringify(proveedor));
-	console.log(`${this.proveedorUrl}/create`)
-	return this.http.post(`${this.proveedorUrl}/create`, JSON.stringify(proveedor)).toPromise()
+	console.log(`${this.proveedorUrl}/retirarCreditos`)
+	return this.http.post(`${this.proveedorUrl}/retirarCreditos`, JSON.stringify(proveedor)).toPromise()
 		.then(response => response)
-		.catch(this.handleError);;
+		.catch(this.handleError);
   }
 
 private getHeaders() {

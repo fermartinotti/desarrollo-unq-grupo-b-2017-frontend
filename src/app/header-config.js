@@ -13,7 +13,7 @@ var SetHeaderInterceptor = (function () {
     function SetHeaderInterceptor() {
     }
     SetHeaderInterceptor.prototype.intercept = function (req, next) {
-        var token = localStorage.getItem('id_token');
+        var token = localStorage.getItem('access_token');
         if (token) {
             // Clone the request to add the new header.
             var authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });

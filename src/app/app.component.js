@@ -15,13 +15,23 @@ var AppComponent = (function () {
     function AppComponent(clienteService, auth) {
         this.clienteService = clienteService;
         this.auth = auth;
+        this.hasClienteId = false;
+        this.hasProveedorId = false;
         auth.handleAuthentication();
     }
     AppComponent.prototype.ngOnInit = function () {
-        console.log('clientes');
-        this.clienteService.getClientes().then(function (data) {
-            console.log(data);
-        });
+        var _this = this;
+        this.consolidate();
+        this.auth.onChange(function () { return _this.consolidate(); });
+    };
+    AppComponent.prototype.consolidate = function () {
+        console.log('consolidate');
+        if (localStorage.getItem('clienteId')) {
+            this.hasClienteId = true;
+        }
+        if (localStorage.getItem('proveedorId')) {
+            this.hasProveedorId = true;
+        }
     };
     return AppComponent;
 }());

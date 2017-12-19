@@ -12,7 +12,7 @@ export class ClienteService {
 	constructor(private http: HttpClient) {}
 
 	getCliente(id:any): Promise<Cliente> { //metodo para traer un cliente
-  	return this.http.get(`${this.clienteUrl}/getById`+id)
+  	return this.http.get(`${this.clienteUrl}/getById/`+id)
              .toPromise()
              .then(response => response as Cliente)
              .catch(this.handleError);
@@ -23,6 +23,13 @@ export class ClienteService {
 	             .toPromise()
 	             .then(response => response as Cliente[])
 	             .catch(this.handleError);
+	}
+
+	getClienteByEmail(email:String): Promise<Cliente> {
+		return this.http.get(`${this.clienteUrl}/getByEmail/`+ email)
+							 .toPromise()
+							 .then(response => response as Cliente)
+							 .catch(this.handleError);
 	}
 
 	save(cliente: Cliente): Promise<Response> {
@@ -45,18 +52,23 @@ export class ClienteService {
 		console.log(`${this.clienteUrl}/getCreditos`)
 		return this.http.get(`${this.clienteUrl}/getCreditos/`+id)
 			.toPromise()
-			.then(response => response)
+			.then(response =>{
+				console.log(response)
+				return response
+			})
 			.catch(this.handleError);;
 	}
 
-	saveSaldo(cliente: Cliente): Promise<Response> { //metodo para cargar saldo a un cliente
+	saveSaldo(credito: number): Promise<Response> { //metodo para cargar saldo a un cliente
 		console.log(`${this.clienteUrl}/cargarCreditos`)
-		return this.http.put(`${this.clienteUrl}/cargarCreditos`, JSON.stringify(cliente)).toPromise()
-			.then(response => response)
+		return this.http.put(`${this.clienteUrl}/cargarCreditos/${credito}`, {})
+			.toPromise()
+			.then(response =>{
+				console.log(response)
+				return response
+			})
+			.catch(this.handleError);;
 	}
-
-
-
 
 	private getHeaders() {
 		let headers = new Headers();

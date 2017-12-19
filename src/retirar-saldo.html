@@ -1,10 +1,11 @@
 <div class="">
   <h3>Retiro de Saldo</h3>
+  <h2 class="float-right">Saldo Actual: {{proveedor.creditos}}</h2>
   <form #f="ngForm" (ngSubmit)="retirarSaldo(f)">
     <span>Creditos No Disponibles*</span>
     <input [(ngModel)]='proveedor.creditosNoDisponibles' id="creditosNoDisponibles" name="creditosNoDisponibles" #nombre="ngModel" ngModel required >
     <span>Creditos*</span>
-    <input [(ngModel)]='proveedor.creditos' id="creditos" name="creditos" #nombre="ngModel" ngModel required >
+    <input [(ngModel)]='saldo' id="saldo" name="saldo" #nombre="ngModel" ngModel required >
     <button type="submit" class="btn btn-success">Retirar Saldo</button>
   </form>
 </div>

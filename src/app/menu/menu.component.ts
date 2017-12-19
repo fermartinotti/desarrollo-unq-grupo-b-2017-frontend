@@ -11,15 +11,16 @@ import { Router } from '@angular/router';
 
 })
 export class MenuComponent {
-  categorias = ['Pizza', 'Pastas', 'Ensaladas', 'Parrilla'];
+  categorias = ['Pizza', 'Empanadas', 'Sushi', 'Pastas', 'Ensaladas', 'Parrilla'];
   menu : Menu = new Menu({});
 
   constructor(private menuService: MenuService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
      this.route.params.subscribe(params => {
-       //console.log(params['id'])
+       console.log(params['id'])
        if (params['id']){
+         console.log('dasds')
          this.menuService.getMenu(params['id']).then((menuObtained) => {
            this.menu = menuObtained
            console.log(menuObtained)

@@ -8,6 +8,9 @@ import { AuthService } from './auth0/auth0.service';
 })
 export class AppComponent  {
 
+  hasClienteId : boolean = false;
+  hasProveedorId : boolean = false;
+
 	constructor(
     private clienteService: ClienteService,
     public auth: AuthService
@@ -15,11 +18,19 @@ export class AppComponent  {
     auth.handleAuthentication();
   }
 
-	ngOnInit() {
-		console.log('clientes')
-		this.clienteService.getClientes().then((data) => {
-			console.log(data)
-		})
+  ngOnInit(){
+    this.consolidate()
+    this.auth.onChange(()=> this.consolidate())
+  }
+
+	consolidate() {
+    console.log('consolidate')
+    if(localStorage.getItem('clienteId')){
+        this.hasClienteId = true;
+    }
+    if(localStorage.getItem('proveedorId')){
+        this.hasProveedorId = true;
+    }
 	}
 
 }

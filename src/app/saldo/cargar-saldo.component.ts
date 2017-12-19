@@ -14,20 +14,19 @@ export class SaldoComponent {
   cliente : Cliente = new Cliente();
   recarga : number = 0;
   constructor(private clienteService: ClienteService, private route: ActivatedRoute) {}
-  
+
   ngOnInit(){
     console.log(localStorage.getItem('clienteId'),this.cliente.creditos)
     this.cliente.id = Number(localStorage.getItem('clienteId'))
     this.clienteService.getSaldo(this.cliente.id).then((data) =>  {
-      this.cliente.creditos = parseFloat(data.text())
+      console.log(data)
+      this.cliente.creditos = parseFloat(data.toString())
 		})
   }
 
   guardarSaldo(f: NgForm){
-    console.log(f)
-    console.log(localStorage.getItem('clienteId'),this.cliente.creditos)
-    this.cliente.id = Number(localStorage.getItem('clienteId'))
-    this.clienteService.saveSaldo(this.cliente).then((data) =>  {
+    this.clienteService.saveSaldo(this.recarga).then((data) =>  {
+			console.log('incrementando')
 			console.log(data)
       this.cliente.creditos = this.cliente.creditos + this.recarga
 		})

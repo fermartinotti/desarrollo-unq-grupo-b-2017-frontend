@@ -23,14 +23,12 @@ var ClienteLoginComponent = (function () {
     ClienteLoginComponent.prototype.create = function (f) {
         var _this = this;
         console.log(f);
-        this.clienteService.save(this.cliente).then(function (data) {
-            console.log(_this.router);
-            console.log(data);
-            console.log(data.json().id);
+        this.cliente.email = localStorage.getItem('email');
+        this.clienteService.save(this.cliente).then(function (response) {
             //window.localStorage.setItem('clienteId', String(data.json().id))
-            localStorage.setItem('clienteId', String(data.json().id));
+            localStorage.setItem('clienteId', String(response.json().id));
             //console.log(localStorage.getItem('clienteId', String(data.json().id)))
-            _this.router.navigateByUrl('/cliente-login/' + data.json().id);
+            _this.router.navigateByUrl('/cliente-login/' + response);
         });
     };
     ClienteLoginComponent.prototype.update = function (f) {
@@ -51,10 +49,4 @@ ClienteLoginComponent = __decorate([
     __metadata("design:paramtypes", [cliente_service_1.ClienteService, router_1.ActivatedRoute, router_2.Router])
 ], ClienteLoginComponent);
 exports.ClienteLoginComponent = ClienteLoginComponent;
-// onSubmit(f: NgForm) {
-//   console.log(f)
-//   this.menuService.save(f.value).then((data) =>  {
-//     console.log(data)
-//     console.log('data')
-//   })
 //# sourceMappingURL=cliente-login.component.js.map

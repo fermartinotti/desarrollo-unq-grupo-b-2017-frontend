@@ -75,10 +75,9 @@
 
           </div>
 
-           <!-- {{categorias}} -->
-           <button *ngIf='menu.id' (click)="updateMenu(f)" class="btn btn-info">Actualizar</button>
+           <button (click)="updateMenu(f)" class="btn btn-info">Actualizar</button>
            <button *ngIf='!menu.id' [disabled]="!f.form.valid" (click)="createMenu(f)">Crear</button>
-           <!-- <button type="submit" [disabled]="!f.form.valid" >Crear Menu</button> -->
+
         </form>
       </div>
   </div>

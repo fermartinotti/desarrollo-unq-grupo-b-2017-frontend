@@ -18,14 +18,12 @@ export class ClienteLoginComponent {
 
 create(f:NgForm){
   console.log(f)
-  this.clienteService.save(this.cliente).then((data) => {
-    console.log(this.router)
-    console.log(data)
-    console.log(data.json().id)
+  this.cliente.email = localStorage.getItem('email')
+  this.clienteService.save(this.cliente).then((response) => {
     //window.localStorage.setItem('clienteId', String(data.json().id))
-    localStorage.setItem('clienteId', String(data.json().id))
+    localStorage.setItem('clienteId', String(response.json().id) )
     //console.log(localStorage.getItem('clienteId', String(data.json().id)))
-    this.router.navigateByUrl('/cliente-login/'+data.json().id)
+    this.router.navigateByUrl('/cliente-login/'+response)
   })
 }
 
@@ -40,10 +38,3 @@ update(f:NgForm){
 }
 
 }
-
-// onSubmit(f: NgForm) {
-//   console.log(f)
-//   this.menuService.save(f.value).then((data) =>  {
-//     console.log(data)
-//     console.log('data')
-//   })

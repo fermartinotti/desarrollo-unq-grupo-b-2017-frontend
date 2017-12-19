@@ -11,13 +11,22 @@ import { Proveedor }  from '../proveedor/proveedor';
 })
 export class RetirarSaldoComponent  {
   proveedor : Proveedor = new Proveedor();
+  saldo : number = 0;
   constructor(private proveedorService: ProveedorService, private route: ActivatedRoute) {}
 
+  ngOnInit(){
+    // this.proveedorService.getSaldo(this.proveedor.id).then((data) =>  {
+    //   console.log(data)
+    //   this.proveedor.creditos = parseFloat(data.json().creditos)
+		// })
+    this.proveedorService.getSaldo(localStorage.getItem('proveedorId')).then((data) =>  {
+      console.log(data)
+      this.proveedor.creditos = parseFloat(data.toString())
+		})
+  }
+
   retirarSaldo(f: NgForm) {
-    console.log(f)
-    console.log(localStorage.getItem('proveedorId'),this.proveedor.creditos)
-    this.proveedor.id = Number(localStorage.getItem('proveedorId'))
-    this.proveedorService.retirarSaldo(f.value).then((data) =>  {
+    this.proveedorService.retirarSaldo(this.proveedor).then((data) =>  {
 			console.log(data)
 		})
   }

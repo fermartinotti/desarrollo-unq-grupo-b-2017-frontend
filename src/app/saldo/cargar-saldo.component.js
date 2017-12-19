@@ -24,15 +24,14 @@ var SaldoComponent = (function () {
         console.log(localStorage.getItem('clienteId'), this.cliente.creditos);
         this.cliente.id = Number(localStorage.getItem('clienteId'));
         this.clienteService.getSaldo(this.cliente.id).then(function (data) {
-            _this.cliente.creditos = parseFloat(data.text());
+            console.log(data);
+            _this.cliente.creditos = parseFloat(data.toString());
         });
     };
     SaldoComponent.prototype.guardarSaldo = function (f) {
         var _this = this;
-        console.log(f);
-        console.log(localStorage.getItem('clienteId'), this.cliente.creditos);
-        this.cliente.id = Number(localStorage.getItem('clienteId'));
-        this.clienteService.saveSaldo(this.cliente).then(function (data) {
+        this.clienteService.saveSaldo(this.recarga).then(function (data) {
+            console.log('incrementando');
             console.log(data);
             _this.cliente.creditos = _this.cliente.creditos + _this.recarga;
         });

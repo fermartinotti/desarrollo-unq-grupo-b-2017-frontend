@@ -1,5 +1,6 @@
 import { Cliente } from '../cliente/cliente';
 import { Menu } from '../menu/menu';
+import { Proveedor } from '../proveedor/proveedor'
 
 export class Pedido {
   fechaDeEntrega : Date;
@@ -8,6 +9,8 @@ export class Pedido {
   cliente : Cliente;
   menu : Menu;
   descripcion : String;
+  cantidad : number;
+  proveedor : Proveedor;
   //estadoPuntuacion : EstadoPuntuacion
 }
 

@@ -21,6 +21,19 @@ var Menu = (function () {
         this.cantidadMaxVtasPorDia = (input.cantidadMaxVtasPorDia) ? input.cantidadMaxVtasPorDia : 0;
         return this;
     };
+    Menu.serialize = function (menu) {
+        menu.fechaVigenciaDesde = this.convertFromJavaDateToJsDate(menu.fechaVigenciaDesde).toISOString();
+        menu.fechaVigenciaHasta = this.convertFromJavaDateToJsDate(menu.fechaVigenciaHasta).toISOString();
+        return menu;
+    };
+    Menu.convertFromJavaDateToJsDate = function (javadate) {
+        var day = javadate.dayOfMonth;
+        var month = javadate.monthValue - 1; // Month is 0-indexed
+        var year = javadate.year;
+        var date = new Date(Date.UTC(year, month, day));
+        console.log(date);
+        return date;
+    };
     return Menu;
 }());
 exports.Menu = Menu;

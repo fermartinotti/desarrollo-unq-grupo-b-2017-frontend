@@ -17,12 +17,21 @@ var RetirarSaldoComponent = (function () {
         this.proveedorService = proveedorService;
         this.route = route;
         this.proveedor = new proveedor_1.Proveedor();
+        this.saldo = 0;
     }
+    RetirarSaldoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // this.proveedorService.getSaldo(this.proveedor.id).then((data) =>  {
+        //   console.log(data)
+        //   this.proveedor.creditos = parseFloat(data.json().creditos)
+        // })
+        this.proveedorService.getSaldo(localStorage.getItem('proveedorId')).then(function (data) {
+            console.log(data);
+            _this.proveedor.creditos = parseFloat(data.toString());
+        });
+    };
     RetirarSaldoComponent.prototype.retirarSaldo = function (f) {
-        console.log(f);
-        console.log(localStorage.getItem('proveedorId'), this.proveedor.creditos);
-        this.proveedor.id = Number(localStorage.getItem('proveedorId'));
-        this.proveedorService.retirarSaldo(f.value).then(function (data) {
+        this.proveedorService.retirarSaldo(this.proveedor).then(function (data) {
             console.log(data);
         });
     };
